@@ -4,14 +4,14 @@
         <div class="row">
             <div class="d-flex justify-content-between mb-4">
                 <div class="card-header fs-4">
-                    Tambah Berita sambutan
+                    Tambah Berita Ekstra
                 </div>
                 <div id="buatTim" class="d-flex align-items-end">
 
                 </div>
             </div>
         </div>
-        <form class="mt-4" action="{{ Route('announcement.store') }}" enctype="multipart/form-data" method="POST">
+        <form class="mt-4" action="{{ Route('ekstra.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="modal-body">
                 <p>
@@ -21,7 +21,15 @@
                     <div class="mb-3">
                         <input type="text" name="title" class="form-control" placeholder="Name" />
                     </div>
-                     
+                    <label for="msg">Pilih jenis ekstra <label style="color: red;font-size: 22px">*</label>
+                    </label>
+                    <select class="form-control" name="ekstra_id" id="">
+                        <option disabled selected value="">Pilih Ekstra</option>
+                        @foreach ($ekstras as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                    
                     <label class="mt-3" for="msg">Photo <label style="color: red;font-size: 22px">*</label></label>
                     <div class="mb-3">
                         <input type="file" name="photo" class="form-control" placeholder="Name" />

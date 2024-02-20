@@ -147,7 +147,8 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() == 'prestation.index' ? 'active' : '' }}" href="{{Route('prestation.index')}}" aria-expanded="false">
+                            <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['prestation.index', 'prestation.create','prestation.edit']) ? 'active' : '' }}"
+                                href="{{ Route('prestation.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file-text"></i>
                                 </span>
@@ -155,7 +156,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item  {{ Route::currentRouteName() == 'ekstra.index' ? 'active' : '' }}">
-                            <a class="sidebar-link " href="{{Route('ekstra.index')}}" aria-expanded="false">
+                            <a class="sidebar-link " href="{{ Route('ekstra.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chart-donut-3"></i>
                                 </span>
@@ -171,64 +172,64 @@
                                 <span class="hide-menu">Pengumuman</span>
                             </a>
                         </li>
-                        @if(Auth::user()->role == 'Admin')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow {{ Route::currentRouteNamed('sambutan.admin', 'visi.admin', 'sejarah.admin', 'contact.admin') ? 'active' : '' }}"
-                                href="#" aria-expanded="false">
-                                <span class="d-flex">
-                                    <i class="ti ti-list-details"></i>
-                                </span>
-                                <span class="hide-menu">MI Al-Aziz</span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item ">
-                                    <a href="{{ Route('sambutan.admin') }}"
-                                        class="sidebar-link {{ Route::currentRouteName() == 'sambutan.admin' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">Sambutan</span>
-                                    </a>
-                                </li>
+                        @if (Auth::user()->role == 'Admin')
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow {{ Route::currentRouteNamed('sambutan.admin', 'visi.admin', 'sejarah.admin', 'contact.admin') ? 'active' : '' }}"
+                                    href="#" aria-expanded="false">
+                                    <span class="d-flex">
+                                        <i class="ti ti-list-details"></i>
+                                    </span>
+                                    <span class="hide-menu">MI Al-Aziz</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item ">
+                                        <a href="{{ Route('sambutan.admin') }}"
+                                            class="sidebar-link {{ Route::currentRouteName() == 'sambutan.admin' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">Sambutan</span>
+                                        </a>
+                                    </li>
 
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('visi.admin') }}"
-                                        class="sidebar-link {{ Route::currentRouteName() == 'visi.admin' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">Visi-Misi</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('history.admin') }}"
-                                        class="sidebar-link {{ Route::currentRouteName() == 'history.admin' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">Sejarah</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('contact.admin') }}"
-                                        class="sidebar-link {{ Route::currentRouteName() == 'contact.admin' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">Kontak</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('ekstrakurikuler.index') }}"
-                                        class="sidebar-link {{ Route::currentRouteName() == 'ekstrakurikuler.index' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">Jenis Ekstra</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('visi.admin') }}"
+                                            class="sidebar-link {{ Route::currentRouteName() == 'visi.admin' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">Visi-Misi</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('history.admin') }}"
+                                            class="sidebar-link {{ Route::currentRouteName() == 'history.admin' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">Sejarah</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('contact.admin') }}"
+                                            class="sidebar-link {{ Route::currentRouteName() == 'contact.admin' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">Kontak</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('ekstrakurikuler.index') }}"
+                                            class="sidebar-link {{ Route::currentRouteName() == 'ekstrakurikuler.index' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">Jenis Ekstra</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         @endif
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ Route::currentRouteName() == 'pengguna.index' ? 'active' : '' }}"

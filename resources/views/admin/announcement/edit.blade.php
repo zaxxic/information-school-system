@@ -4,7 +4,7 @@
         <div class="row">
             <div class="d-flex justify-content-between mb-4">
                 <div class="card-header fs-4">
-                    Tambah Berita sambutan
+                    Edit Berita Pengumuman
                 </div>
                 <div id="buatTim" class="d-flex align-items-end">
 

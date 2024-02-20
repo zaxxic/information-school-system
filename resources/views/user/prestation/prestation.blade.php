@@ -10,7 +10,7 @@
                         <div class="breadcrumb-content">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active">Kelas {{ request()->segment(2) }}
+                                    <li class="breadcrumb-item active">Pengumuman
                                     </li>
                                 </ol>
                             </nav>
@@ -29,20 +29,20 @@
                         <div class="col-70">
                             <div class="weekly-post-item-wrap-three">
                                 <div class="row">
-                                    @foreach ($classes as $item)
+                                    @foreach ($prestation as $item)
                                         <div class="col-md-6">
                                             <div class="weekly-post-three">
                                                 <div class="weekly-post-thumb">
-                                                    <a
-                                                        href="{{ route('class.show', ['id' => $item->class_category_id, 'slug' => $item->slug]) }}">
-                                                        <img src="{{ asset('storage/kelas1/' . $item->photo) }}"
+                                                    <a href="{{ route('announcement.show', ['slug' => $item->slug]) }}">
+                                                        <img src="{{ asset('storage/announcement/' . $item->photo) }}"
                                                             alt="">
+                                                        {{ $item->title }}
                                                     </a>
 
                                                 </div>
                                                 <div class="weekly-post-content">
                                                     <h2 class="post-title"><a
-                                                            href="{{ route('class.show', ['id' => $item->class_category_id, 'slug' => $item->slug]) }}">
+                                                            href="{{ route('announcement.show', ['slug' => $item->slug]) }}">
                                                             {{ $item->title }}
                                                         </a>
 
@@ -71,25 +71,25 @@
                             <div class="pagination-wrap mt-30">
                                 <div class="col-md-12">
                                     <ul class="pagination justify-content-center">
-                                        @if ($classes->currentPage() > 1)
+                                        @if ($prestation->currentPage() > 1)
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $classes->previousPageUrl() }}"
+                                                <a class="page-link" href="{{ $prestation->previousPageUrl() }}"
                                                     aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
                                         @endif
 
-                                        @for ($i = 1; $i <= $classes->lastPage(); $i++)
-                                            <li class="page-item {{ $classes->currentPage() == $i ? 'active' : '' }}">
+                                        @for ($i = 1; $i <= $prestation->lastPage(); $i++)
+                                            <li class="page-item {{ $prestation->currentPage() == $i ? 'active' : '' }}">
                                                 <a class="page-link"
-                                                    href="{{ $classes->url($i) }}">{{ $i }}</a>
+                                                    href="{{ $prestation->url($i) }}">{{ $i }}</a>
                                             </li>
                                         @endfor
 
-                                        @if ($classes->currentPage() < $classes->lastPage())
+                                        @if ($prestation->currentPage() < $prestation->lastPage())
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $classes->nextPageUrl() }}"
+                                                <a class="page-link" href="{{ $prestation->nextPageUrl() }}"
                                                     aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
@@ -118,8 +118,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @include('user.class.recent')
-
+ 
 
                             </div>
                         </div>

@@ -12,73 +12,41 @@
         <section class="banner-post-area-four pb-30">
             <div class="container custom-container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="banner-post-four">
-                            <div class="banner-post-thumb-four">
-                                <a href="blog-details.html"><img src="assets/img/blog/cr_banner_post01.jpg"
-                                        alt=""></a>
-                            </div>
-                            <div class="banner-post-content-four">
-                                <a href="blog.html" class="post-tag">News</a>
-                                <h2 class="post-title bold-underline"><a href="blog-details.html">Accessible Target
-                                        Sizes <br> Cheatsheet</a></h2>
-                                <div class="blog-post-meta white-blog-meta">
-                                    <ul class="list-wrap">
-                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a></li>
-                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                    </ul>
+
+                    @foreach ($announcement as $item)
+                        <div class="col-lg-4">
+                            <div class="banner-post-four">
+                                <div class="banner-post-thumb-four">
+                                    <a href="blog-details.html"><img src="{{ asset('storage/announcement/' . $item->photo) }}"
+                                            alt=""></a>
+                                </div>
+                                <div class="banner-post-content-four">
+                                    <a href="blog.html" class="post-tag">Pengumuman</a>
+                                    <h2 class="post-title bold-underline"><a
+                                            href="blog-details.html">{{ $item->title }}</a></h2>
+                                    <div class="blog-post-meta white-blog-meta">
+                                        <ul class="list-wrap">
+                                            <li><i class="flaticon-user"></i>by {{ $item->user->role }}</li>
+                                            <li><i
+                                                    class="flaticon-calendar"></i>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                            </li>
+                                            <li><i
+                                                    class="flaticon-history"></i>{{ $item->created_at->locale('id_ID')->diffForHumans(null, true) }}
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="banner-post-four">
-                            <div class="banner-post-thumb-four">
-                                <a href="blog-details.html"><img src="assets/img/blog/cr_banner_post02.jpg"
-                                        alt=""></a>
-                            </div>
-                            <div class="banner-post-content-four">
-                                <a href="blog.html" class="post-tag">Bitcoin</a>
-                                <h2 class="post-title bold-underline"><a href="blog-details.html">The Potentially
-                                        Dangerous Non-Accessibility Of Cookie</a></h2>
-                                <div class="blog-post-meta white-blog-meta">
-                                    <ul class="list-wrap">
-                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a></li>
-                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="banner-post-four">
-                            <div class="banner-post-thumb-four">
-                                <a href="blog-details.html"><img src="assets/img/blog/cr_banner_post03.jpg"
-                                        alt=""></a>
-                            </div>
-                            <div class="banner-post-content-four">
-                                <a href="blog.html" class="post-tag">Economy</a>
-                                <h2 class="post-title bold-underline"><a href="blog-details.html">The Growing Need For
-                                        Effective Password Management</a></h2>
-                                <div class="blog-post-meta white-blog-meta">
-                                    <ul class="list-wrap">
-                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a></li>
-                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </section>
         <!-- banner-post-area-end -->
 
         <!-- ad-banner-area -->
-        <div class="ad-banner-area">
+        {{-- <div class="ad-banner-area">
             <div class="container">
                 <div class="ad-banner-img ad-banner-img-two text-center">
                     <a href="#">
@@ -86,7 +54,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- ad-banner-area-end -->
 
         <!-- recent-post-area -->
@@ -94,10 +62,10 @@
             <div class="container">
                 <div class="recent-post-inner-wrap">
                     <div class="row justify-content-center">
-                        <div class="col-70">
+                        <div class="col-100">
                             <div class="section-title-wrap mb-30">
                                 <div class="section-title">
-                                    <h2 class="title">Postingan terakhir</h2>
+                                    <h2 class="title">Prestasi</h2>
                                 </div>
                                 <div class="view-all-btn">
                                     <a href="blog.html" class="link-btn">Lihat Semua
@@ -117,276 +85,63 @@
                             </div>
                             <div class="popular-post-item-wrap">
                                 <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="ta-overlay-post-two">
-                                            <div class="overlay-post-thumb-two">
-                                                <a href="blog-details.html"><img src="assets/img/blog/cr_recent_post01.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="overlay-post-content-two">
-                                                <a href="blog.html" class="post-tag post-tag-three">Market</a>
-                                                <h2 class="post-title"><a href="blog-details.html">The Game Changing
-                                                        ar
-                                                        roadeily Breakfast</a></h2>
-                                                <div class="blog-post-meta white-blog-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                    @foreach ($prestation as $key => $item)
+                                        @if ($key >= 3)
+                                            <div class="col-lg-6">
+                                                <div class="ta-overlay-post-two">
+                                                    <div class="overlay-post-thumb-two">
+                                                        <a href="blog-details.html"><img
+                                                                src="{{ asset('storage/announcement/' . $item->photo) }}"
+                                                                alt=""></a>
+                                                    </div>
+                                                    <div class="overlay-post-content-two">
+                                                        <h2 class="post-title"><a href="blog-details.html">
+                                                                {{ $item->title }}</a></h2>
+                                                        <div class="blog-post-meta white-blog-meta">
+                                                            <ul class="list-wrap">
+                                                                <li><i
+                                                                        class="flaticon-calendar"></i>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                                </li>
+                                                                <li><i
+                                                                        class="flaticon-history"></i>{{ $item->created_at->locale('id_ID')->diffForHumans(null, true) }}
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="ta-overlay-post-two">
-                                            <div class="overlay-post-thumb-two">
-                                                <a href="blog-details.html"><img src="assets/img/blog/cr_recent_post02.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="overlay-post-content-two">
-                                                <a href="blog.html" class="post-tag post-tag-three">Bitcoin</a>
-                                                <h2 class="post-title"><a href="blog-details.html">The Game Changing
-                                                        ar
-                                                        roadeily Breakfast</a></h2>
-                                                <div class="blog-post-meta white-blog-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                        @else
+                                            <div class="col-lg-4">
+                                                <div class="ta-overlay-post-two">
+                                                    <div class="overlay-post-thumb-two">
+                                                        <a href="blog-details.html"><img
+                                                                src="{{ asset('storage/announcement/' . $item->photo) }}"
+                                                                alt=""></a>
+                                                    </div>
+                                                    <div class="overlay-post-content-two">
+                                                        <h2 class="post-title"><a
+                                                                href="blog-details.html">{{ $item->title }}</a></h2>
+                                                        <div class="blog-post-meta white-blog-meta">
+                                                            <ul class="list-wrap">
+                                                                <li><i
+                                                                        class="flaticon-history"></i>{{ $item->created_at->locale('id_ID')->diffForHumans(null, true) }}
+                                                                </li>
+                                                                <li><i
+                                                                        class="flaticon-calendar"></i>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="ta-overlay-post-two">
-                                            <div class="overlay-post-thumb-two">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_recent_post03.jpg" alt=""></a>
-                                            </div>
-                                            <div class="overlay-post-content-two">
-                                                <a href="blog.html" class="post-tag post-tag-three">Economy</a>
-                                                <h2 class="post-title"><a href="blog-details.html">The Game Changing
-                                                        ar
-                                                        roadeily Breakfast</a></h2>
-                                                <div class="blog-post-meta white-blog-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="ta-overlay-post-two">
-                                            <div class="overlay-post-thumb-two">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_recent_post04.jpg" alt=""></a>
-                                            </div>
-                                            <div class="overlay-post-content-two">
-                                                <a href="blog.html" class="post-tag post-tag-three">News</a>
-                                                <h2 class="post-title"><a href="blog-details.html">Racing Games
-                                                        Browned Butte roadert Cookies Daily Breakfast</a></h2>
-                                                <div class="blog-post-meta white-blog-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="ta-overlay-post-two">
-                                            <div class="overlay-post-thumb-two">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_recent_post05.jpg" alt=""></a>
-                                            </div>
-                                            <div class="overlay-post-content-two">
-                                                <a href="blog.html" class="post-tag post-tag-three">Crypto</a>
-                                                <h2 class="post-title"><a href="blog-details.html">Racing Games
-                                                        Browned Butte roadert Cookies Daily Breakfast</a></h2>
-                                                <div class="blog-post-meta white-blog-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endif
+                                    @endforeach
+
+
                                 </div>
                             </div>
                         </div>
-                        <div class="col-30">
-                            <div class="sidebar-wrap no-sticky">
-                                <div class="sidebar-tab">
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="latest-tab" data-bs-toggle="tab"
-                                                data-bs-target="#latest-tab-pane" type="button" role="tab"
-                                                aria-controls="latest-tab-pane" aria-selected="true">Berita terbaru</button>
-                                        </li>
-                                        
-                                    </ul>
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="latest-tab-pane" role="tabpanel"
-                                            aria-labelledby="latest-tab" tabindex="0">
-                                            <div class="sidebar-widget sidebar-widget-two">
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post01.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">Crypto</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">Communication
-                                                                For Everyday
-                                                                Meetings</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post02.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">News</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">Building
-                                                                Your Security Strategy</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post03.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">Economy</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">Phone
-                                                                Numbers For Web Designers</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post04.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">Market</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">The Butter
-                                                                Chocolate Cookies Daily</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="featured-tab-pane" role="tabpanel"
-                                            aria-labelledby="featured-tab" tabindex="0">
-                                            <div class="sidebar-widget sidebar-widget-two">
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post03.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">Economy</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">Phone
-                                                                Numbers For Web Designers</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post04.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">Market</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">The Butter
-                                                                Chocolate Cookies Daily</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post01.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">Crypto</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">Communication
-                                                                For Everyday
-                                                                Meetings</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="popular-post popular-post-two">
-                                                    <div class="thumb">
-                                                        <a href="blog-details.html"><img
-                                                                src="assets/img/blog/cr_latest_post02.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <a href="blog.html" class="post-tag-two">News</a>
-                                                        <h2 class="post-title"><a href="blog-details.html">Building
-                                                                Your Security Strategy</a></h2>
-                                                        <div class="blog-post-meta">
-                                                            <ul class="list-wrap">
-                                                                <li><i class="flaticon-calendar"></i>27 August, 2024
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -394,7 +149,7 @@
         <!-- recent-post-area-end -->
 
         <!-- trending-post-area -->
-       
+
         <!-- trending-post-area-end -->
 
         <!-- ad-banner-area -->
@@ -414,140 +169,180 @@
             <div class="container">
                 <div class="mining-post-inner">
                     <div class="row justify-content-center">
-                        <div class="col-70">
+                        <div class="col-100">
                             <div class="mining-post-wrap mb-40">
                                 <div class="section-title-wrap mb-30">
                                     <div class="section-title">
-                                        <h2 class="title">Prestasi</h2>
+                                        <h2 class="title">Kelas</h2>
                                     </div>
                                     <div class="section-title-line"></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="featured-post-item healthy-post">
-                                            <div class="featured-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_mining_post01.jpg" alt=""></a>
-                                            </div>
-                                            <div class="featured-post-content">
-                                                <a href="blog.html" class="post-tag">News</a>
-                                                <h2 class="post-title"><a href="blog-details.html">What You Miss in
-                                                        the
-                                                        Market Changes</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a>
-                                                        </li>
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                    @isset($class1)
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="featured-post-item healthy-post">
+                                                <div class="featured-post-thumb">
+                                                    <a
+                                                        href="{{ route('class.show', ['id' => $class1->class_category_id, 'slug' => $class1->slug]) }}"><img
+                                                            src="{{ asset('storage/kelas1/' . $class1->photo) }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="featured-post-content">
+                                                    <a href="{{ Route('class1') }}" class="post-tag">Kelas 1</a>
+                                                    <h2 class="post-title"><a
+                                                            href="{{ route('class.show', ['id' => $class1->class_category_id, 'slug' => $class1->slug]) }}">{{ $class1->name }}</a>
+                                                    </h2>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i class="flaticon-user"></i>by <a
+                                                                    href="author.html">{{ $class1->user->role }}</a></li>
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $class1->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="featured-post-item healthy-post">
-                                            <div class="featured-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_mining_post02.jpg" alt=""></a>
-                                            </div>
-                                            <div class="featured-post-content">
-                                                <a href="blog.html" class="post-tag">Crypto</a>
-                                                <h2 class="post-title"><a href="blog-details.html">New Bill Allows to
-                                                        Pay
-                                                        Crypto Taxes</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a>
-                                                        </li>
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                    @endisset
+                                    @isset($class2)
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="featured-post-item healthy-post">
+                                                <div class="featured-post-thumb">
+                                                    <a
+                                                        href="{{ route('class.show', ['id' => $class2->class_category_id, 'slug' => $class2->slug]) }}"><img
+                                                            src="{{ asset('storage/kelas1/' . $class2->photo) }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="featured-post-content">
+                                                    <a href="{{ Route('class2') }}" class="post-tag">kelas 2</a>
+                                                    <h2 class="post-title"><a
+                                                            href="{{ route('class.show', ['id' => $class2->class_category_id, 'slug' => $class2->slug]) }}">{{ $class2->name }}</a>
+                                                    </h2>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i class="flaticon-user"></i>by <a
+                                                                    href="author.html">{{ $class2->user->role }}</a></li>
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $class2->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="featured-post-item healthy-post">
-                                            <div class="featured-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_mining_post03.jpg" alt=""></a>
-                                            </div>
-                                            <div class="featured-post-content">
-                                                <a href="blog.html" class="post-tag">Economy</a>
-                                                <h2 class="post-title"><a href="blog-details.html">Crypto Exchange
-                                                        Services
-                                                        In the US</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a>
-                                                        </li>
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                    @endisset
+                                    @isset($class3)
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="featured-post-item healthy-post">
+                                                <div class="featured-post-thumb">
+                                                    <a
+                                                        href="{{ route('class.show', ['id' => $class3->class_category_id, 'slug' => $class3->slug]) }}"><img
+                                                            src="{{ asset('storage/kelas1/' . $class3->photo) }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="featured-post-content">
+                                                    <a href="{{ Route('class3') }}" class="post-tag">kelas 3</a>
+                                                    <h2 class="post-title"><a
+                                                            href="{{ route('class.show', ['id' => $class3->class_category_id, 'slug' => $class3->slug]) }}">{{ $class3->name }}</a>
+                                                    </h2>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i class="flaticon-user"></i>by <a
+                                                                    href="author.html">{{ $class3->user->role }}</a></li>
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $class3->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="featured-post-item healthy-post">
-                                            <div class="featured-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_mining_post04.jpg" alt=""></a>
-                                            </div>
-                                            <div class="featured-post-content">
-                                                <a href="blog.html" class="post-tag">Bitcoin</a>
-                                                <h2 class="post-title"><a href="blog-details.html">Blockchain Can Help
-                                                        with
-                                                        Fundraising</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a>
-                                                        </li>
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                    @endisset
+                                    @isset($class4)
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="featured-post-item healthy-post">
+                                                <div class="featured-post-thumb">
+                                                    <a
+                                                        href="{{ route('class.show', ['id' => $class4->class_category_id, 'slug' => $class4->slug]) }}"><img
+                                                            src="{{ asset('storage/kelas1/' . $class4->photo) }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="featured-post-content">
+                                                    <a href="{{ Route('class4') }}" class="post-tag">kelas 4</a>
+                                                    <h2 class="post-title"><a
+                                                            href="{{ route('class.show', ['id' => $class4->class_category_id, 'slug' => $class4->slug]) }}">{{ $class4->name }}</a>
+                                                    </h2>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i class="flaticon-user"></i>by <a
+                                                                    href="author.html">{{ $class4->user->role }}</a></li>
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $class4->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="featured-post-item healthy-post">
-                                            <div class="featured-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_mining_post05.jpg" alt=""></a>
-                                            </div>
-                                            <div class="featured-post-content">
-                                                <a href="blog.html" class="post-tag">Market</a>
-                                                <h2 class="post-title"><a href="blog-details.html">Benefits of
-                                                        Blockchain for Bank Security</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a>
-                                                        </li>
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                    @endisset
+                                    @isset($class5)
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="featured-post-item healthy-post">
+                                                <div class="featured-post-thumb">
+                                                    <a
+                                                        href="{{ route('class.show', ['id' => $class5->class_category_id, 'slug' => $class5->slug]) }}"><img
+                                                            src="{{ asset('storage/kelas1/' . $class5->photo) }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="featured-post-content">
+                                                    <a href="{{ Route('class5') }}" class="post-tag">kelas 5</a>
+                                                    <h2 class="post-title"><a
+                                                            href="{{ route('class.show', ['id' => $class5->class_category_id, 'slug' => $class5->slug]) }}">{{ $class5->name }}</a>
+                                                    </h2>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i class="flaticon-user"></i>by <a
+                                                                    href="author.html">{{ $class5->user->role }}</a></li>
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $class5->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="featured-post-item healthy-post">
-                                            <div class="featured-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_mining_post06.jpg" alt=""></a>
-                                            </div>
-                                            <div class="featured-post-content">
-                                                <a href="blog.html" class="post-tag">News</a>
-                                                <h2 class="post-title"><a href="blog-details.html">Economic Niches
-                                                        that
-                                                        aren’t Occupied</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-user"></i>by<a href="author.html">Admin</a>
-                                                        </li>
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                    </ul>
+                                    @endisset
+                                    @isset($class6)
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="featured-post-item healthy-post">
+                                                <div class="featured-post-thumb">
+                                                    <a
+                                                        href="{{ route('class.show', ['id' => $class6->class_category_id, 'slug' => $class6->slug]) }}"><img
+                                                            src="{{ asset('storage/kelas1/' . $class6->photo) }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="featured-post-content">
+                                                    <a href="{{ Route('class6') }}" class="post-tag">kelas 6</a>
+                                                    <h2 class="post-title"><a
+                                                            href="{{ route('class.show', ['id' => $class6->class_category_id, 'slug' => $class6->slug]) }}">{{ $class6->name }}</a>
+                                                    </h2>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i class="flaticon-user"></i>by <a
+                                                                    href="author.html">{{ $class6->user->role }}</a></li>
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $class6->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endisset
+
+
+
                                 </div>
                             </div>
                             <div class="ad-banner-area mb-70">
@@ -559,7 +354,7 @@
                             </div>
                             <div class="section-title-wrap mb-30">
                                 <div class="section-title">
-                                    <h2 class="title">Berita minggu ini</h2>
+                                    <h2 class="title">Ekstra</h2>
                                 </div>
                                 <div class="view-all-btn">
                                     <a href="blog.html" class="link-btn">View All
@@ -579,121 +374,31 @@
                             </div>
                             <div class="weekly-post-item-wrap-three">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="weekly-post-three">
-                                            <div class="weekly-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_weekly_post01.jpg" alt=""></a>
-                                                <a href="blog.html" class="post-tag">Market</a>
-                                            </div>
-                                            <div class="weekly-post-content">
-                                                <h2 class="post-title"><a href="blog-details.html">How To Protect Your
-                                                        App With A Model Based On JSONDiff</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                                    </ul>
+                                    @foreach ($ekstra as $item)
+                                        <div class="col-md-6">
+                                            <div class="weekly-post-three">
+                                                <div class="weekly-post-thumb">
+                                                    <a href="blog-details.html"><img
+                                                            src="{{ asset('storage/ekstra/' . $item->photo) }}"
+                                                            alt=""></a>
                                                 </div>
-                                                <p>Browned butter and brown sugar caramelly oodness crispy edgesthick
-                                                    and soft centers and melty little puddles of chocolate y first
-                                                    favorite.</p>
+                                                <div class="weekly-post-content">
+                                                    <h2 class="post-title"><a
+                                                            href="blog-details.html">{{ $item->title }}</a></h2>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}
+                                                            </li>
+                                                            <li><i
+                                                                    class="flaticon-history"></i>{{ $item->created_at->locale('id_ID')->diffForHumans(null, true) }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="weekly-post-three">
-                                            <div class="weekly-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_weekly_post02.jpg" alt=""></a>
-                                                <a href="blog.html" class="post-tag">Crypto</a>
-                                            </div>
-                                            <div class="weekly-post-content">
-                                                <h2 class="post-title"><a href="blog-details.html">Beyond Algorithms:
-                                                        Skills Of Designers That AI Can’t Replicate</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                                    </ul>
-                                                </div>
-                                                <p>Browned butter and brown sugar caramelly oodness crispy edgesthick
-                                                    and soft centers and melty little puddles of chocolate y first
-                                                    favorite.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="weekly-post-three">
-                                            <div class="weekly-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_weekly_post03.jpg" alt=""></a>
-                                                <a href="blog.html" class="post-tag">Economy</a>
-                                            </div>
-                                            <div class="weekly-post-content">
-                                                <h2 class="post-title"><a href="blog-details.html">A Comprehensive
-                                                        Checklist For Design Workshops</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                                    </ul>
-                                                </div>
-                                                <p>Browned butter and brown sugar caramelly oodness crispy edgesthick
-                                                    and soft centers and melty little puddles of chocolate y first
-                                                    favorite.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="weekly-post-three">
-                                            <div class="weekly-post-thumb">
-                                                <a href="blog-details.html"><img
-                                                        src="assets/img/blog/cr_weekly_post04.jpg" alt=""></a>
-                                                <a href="blog.html" class="post-tag">News</a>
-                                            </div>
-                                            <div class="weekly-post-content">
-                                                <h2 class="post-title"><a href="blog-details.html">Overcoming The
-                                                        Challenges Of Creation For Informational Websites</a></h2>
-                                                <div class="blog-post-meta">
-                                                    <ul class="list-wrap">
-                                                        <li><i class="flaticon-calendar"></i>27 August, 2024</li>
-                                                        <li><i class="flaticon-history"></i>20 Mins</li>
-                                                    </ul>
-                                                </div>
-                                                <p>Browned butter and brown sugar caramelly oodness crispy edgesthick
-                                                    and soft centers and melty little puddles of chocolate y first
-                                                    favorite.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-30">
-                            <div class="sidebar-wrap">
-                                <div class="sidebar-widget sidebar-widget-two">
-                                    <div class="widget-title mb-30">
-                                        <h6 class="title">Follow Us On</h6>
-                                        <div class="section-title-line"></div>
-                                    </div>
-                                    <div class="sidebar-social-wrap">
-                                        <ul class="list-wrap">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i>facebook</a></li>
-                                            <li><a href="#"><i class="fab fa-instagram"></i>instagram</a></li>
-                                            <li><a href="#"><i class="fab fa-youtube"></i>youtube</a></li>
-                                            <li><a href="#"><i class="fab fa-tiktok"></i>Tiktok</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                      
-                                <div class="sidebar-widget sidebar-widget-two">
-                                    <div class="sidebar-img">
-                                        <a href="#">
-                                            <img src="assets/img/images/sidebar_img04.jpg" alt="">
-                                        </a>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

@@ -109,7 +109,7 @@ class EkstraController extends Controller
     public function create()
     {
         $ekstras = Ekstra::get();
-        return view('admin.prestation.create', compact('ekstras'));
+        return view('admin.ekstra.create', compact('ekstras'));
     }
     public function store(Request $request)
     {

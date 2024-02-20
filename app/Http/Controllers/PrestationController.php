@@ -36,6 +36,16 @@ class PrestationController extends Controller
 
         return view('admin.prestation.index', compact('prestation'));
     }
+    public function index_prestation()
+    {
+        $prestation = Announcement::where('jenis', 'prestasi')
+            ->where('status', 1)
+            ->paginate(10);
+        $recent = Announcement::orderBy('id', 'desc')
+            ->take(4)
+            ->get();
+        return view('user.prestation.prestation', compact('prestation', 'recent'));
+    }
     public function create()
     {
         return view('admin.prestation.create');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Class1Controller;
 use App\Http\Controllers\ClassUserController;
 use App\Http\Controllers\EkstraController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PrestationController;
@@ -29,12 +30,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // })->name('contact');
 
-Route::get('/', function () {
-    return view('user.home');
-})->name('home');
+// Route::get('/', function () {
+//     return view('user.home');
+// })->name('home');
 
 //prefix profile
 Route::get('/reset/password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('reset');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 //prefix kelas
@@ -124,7 +127,7 @@ Route::get('/sejarah', [InformationController::class, 'index_history'])->name('h
 Route::get('/kontak', [InformationController::class, 'index_kontak'])->name('contact');
 Route::get('/visi-misi', [InformationController::class, 'index_visi'])->name('visi');
 Route::get('/pengumuman', [AnnouncementController::class, 'index_announcement'])->name('announcement');
-Route::get('/prestasi', [AnnouncementController::class, 'index_visi'])->name('prestation');
+Route::get('/prestasi', [PrestationController::class, 'index_prestation'])->name('prestation');
 Route::get('/pengumuman/{slug}', [AnnouncementController::class, 'shows'])->name('announcement.show');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

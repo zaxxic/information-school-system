@@ -16,7 +16,7 @@ class AnnouncementController extends Controller
      */
     public function index(Request $request)
     {
-        $announcement = Announcement::where('jenis','pengumuman');
+        $announcement = Announcement::where('jenis', 'pengumuman');
 
         if ($request->has('filter')) {
             $dates = explode(' - ', $request->filter);
@@ -42,12 +42,16 @@ class AnnouncementController extends Controller
 
     public function index_announcement()
     {
-        $announcement = Announcement::where('jenis','pengumuman');
+        $announcement = Announcement::where('jenis', 'pengumuman')
+            ->where('status', 1)
+            ->paginate(10);
         $recent = Announcement::orderBy('id', 'desc')
             ->take(4)
             ->get();
         return view('user.announcement.announcement', compact('announcement', 'recent'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

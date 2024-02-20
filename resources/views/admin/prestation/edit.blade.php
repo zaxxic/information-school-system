@@ -1,17 +1,17 @@
-@extends('admin.app')
+ @extends('admin.app')
 @section('fluid')
     <div class="container-fluid">
         <div class="row">
             <div class="d-flex justify-content-between mb-4">
                 <div class="card-header fs-4">
-                    Tambah Berita sambutan
+                    Edit Berita Prestasi
                 </div>
                 <div id="buatTim" class="d-flex align-items-end">
 
                 </div>
             </div>
         </div>
-        <form class="mt-4" action="{{ route('announcement.update', $announcement->id) }}" enctype="multipart/form-data"
+        <form class="mt-4" action="{{ route('prestation.update', $prestation->id) }}" enctype="multipart/form-data"
             method="POST">
             @csrf
             @method('PUT')
@@ -24,35 +24,35 @@
                     </label>
                     <div class="mb-3">
 
-                        <input type="text" name="title" value="{{ $announcement->title ?? '' }}" class="form-control"
+                        <input type="text" name="title" value="{{ $prestation->title ?? '' }}" class="form-control"
                             placeholder="Judul" />
                     </div>
                     <label for="msg">Photo <label style="color: red;font-size: 22px">*</label></label>
                     <div class="mb-3">
                         <div class="foto mb-2" style="width: 100%; height: 400px;">
                             <img style="width: 100%; height: 400px; object-fit: contain;" id="photo"
-                                src="{{ asset('storage/announcement/' . ($announcement->photo ?? '')) }}" alt="">
+                                src="{{ asset('storage/announcement/' . ($prestation->photo ?? '')) }}" alt="">
                         </div>
                     </div>
                     <input type="file" name="photo" class="form-control" placeholder="Name" value="" />
                     <label for="msg">Paragraf 1 <label style="color: red;font-size: 22px">*</label></label>
                     <div class="mb-3">
-                        <textarea name="paragraf1" class="form-control" placeholder="Text Area">{{ $announcement->paragraf1 ?? '' }}</textarea>
+                        <textarea name="paragraf1" class="form-control" placeholder="Text Area">{{ $prestation->paragraf1 ?? '' }}</textarea>
                     </div>
                     <label for="msg">Paragraf 2 <label style="color: red;font-size: 22px">*</label></label>
                     <div class="mb-3">
-                        <textarea name="paragraf2" class="form-control" placeholder="Text Area">{{ $announcement->paragraf2 ?? '' }}</textarea>
+                        <textarea name="paragraf2" class="form-control" placeholder="Text Area">{{ $prestation->paragraf2 ?? '' }}</textarea>
                     </div>
                     <label for="msg">Paragraf 3 <label style="color: red;font-size: 22px">*</label></label>
                     <div class="mb-3">
-                        <textarea name="paragraf3" class="form-control" placeholder="Text Area">{{ $announcement->paragraf3 ?? '' }}</textarea>
+                        <textarea name="paragraf3" class="form-control" placeholder="Text Area">{{ $prestation->paragraf3 ?? '' }}</textarea>
                     </div>
                     <label for="msg">Photo 2 </label>
-                    @if ($announcement->foto)
+                    @if ($prestation->foto)
                         <div class="mb-3">
                             <div class="foto mb-2" style="width: 100%; height: 400px;">
                                 <img style="width: 100%; height: 400px; object-fit: contain;" id="photo"
-                                    src="{{ asset('storage/announcement/' . $announcement->foto) }}" alt="">
+                                    src="{{ asset('storage/announcement/' . $prestation->foto) }}" alt="">
                             </div>
                         </div>
                     @endif
@@ -106,10 +106,10 @@
                         </button>
                     </div>
                     <label for="msg">Video</label>
-                    @if ($announcement->video)
+                    @if ($prestation->video)
                         <div class="  mb-2" style="width: 100%; height: 400px;">
                             <video controls style="width: 100%; height: 400px; object-fit: contain;" id="photo">
-                                <source src="{{ asset('storage/announcement/' . ($announcement->video ?? '')) }}"
+                                <source src="{{ asset('storage/announcement/' . ($prestation->video ?? '')) }}"
                                     type="video/mp4">
 
                                 Maaf, browser Anda tidak mendukung pemutaran video.

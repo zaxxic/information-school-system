@@ -71,25 +71,25 @@
                             <div class="pagination-wrap mt-30">
                                 <div class="col-md-12">
                                     <ul class="pagination justify-content-center">
-                                        @if ($classes->currentPage() > 1)
+                                        @if ($announcement->currentPage() > 1)
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $classes->previousPageUrl() }}"
+                                                <a class="page-link" href="{{ $announcement->previousPageUrl() }}"
                                                     aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
                                         @endif
 
-                                        @for ($i = 1; $i <= $classes->lastPage(); $i++)
-                                            <li class="page-item {{ $classes->currentPage() == $i ? 'active' : '' }}">
+                                        @for ($i = 1; $i <= $announcement->lastPage(); $i++)
+                                            <li class="page-item {{ $announcement->currentPage() == $i ? 'active' : '' }}">
                                                 <a class="page-link"
-                                                    href="{{ $classes->url($i) }}">{{ $i }}</a>
+                                                    href="{{ $announcement->url($i) }}">{{ $i }}</a>
                                             </li>
                                         @endfor
 
-                                        @if ($classes->currentPage() < $classes->lastPage())
+                                        @if ($announcement->currentPage() < $announcement->lastPage())
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $classes->nextPageUrl() }}"
+                                                <a class="page-link" href="{{ $announcement->nextPageUrl() }}"
                                                     aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
