@@ -128,6 +128,8 @@ Route::get('/kontak', [InformationController::class, 'index_kontak'])->name('con
 Route::get('/visi-misi', [InformationController::class, 'index_visi'])->name('visi');
 Route::get('/pengumuman', [AnnouncementController::class, 'index_announcement'])->name('announcement');
 Route::get('/prestasi', [PrestationController::class, 'index_prestation'])->name('prestation');
+Route::get('/prestasi/{slug}', [PrestationController::class, 'shows'])->name('prestation.show');
+
 Route::get('/pengumuman/{slug}', [AnnouncementController::class, 'shows'])->name('announcement.show');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

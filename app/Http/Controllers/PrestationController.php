@@ -36,6 +36,16 @@ class PrestationController extends Controller
 
         return view('admin.prestation.index', compact('prestation'));
     }
+    public function shows($slug)
+    {
+        $item = Announcement::where('slug', $slug)->firstOrFail();
+        $moreParagraf = $item->more;
+        // $recent = Announcement::orderBy('id', 'desc')
+        //     ->take(4)
+        //     ->get();
+
+        return view('user.announcement.show', compact('item', 'moreParagraf'));
+    }
     public function index_prestation()
     {
         $prestation = Announcement::where('jenis', 'prestasi')

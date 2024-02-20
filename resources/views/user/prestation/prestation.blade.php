@@ -33,7 +33,7 @@
                                         <div class="col-md-6">
                                             <div class="weekly-post-three">
                                                 <div class="weekly-post-thumb">
-                                                    <a href="{{ route('announcement.show', ['slug' => $item->slug]) }}">
+                                                    <a href="{{ route('prestation.show', ['slug' => $item->slug]) }}">
                                                         <img src="{{ asset('storage/announcement/' . $item->photo) }}"
                                                             alt="">
                                                         {{ $item->title }}
@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="weekly-post-content">
                                                     <h2 class="post-title"><a
-                                                            href="{{ route('announcement.show', ['slug' => $item->slug]) }}">
+                                                            href="{{ route('prestation.show', ['slug' => $item->slug]) }}">
                                                             {{ $item->title }}
                                                         </a>
 
