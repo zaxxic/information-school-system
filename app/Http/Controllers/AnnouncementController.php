@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\ClassArticle;
+use App\Models\EkstraArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -35,6 +37,9 @@ class AnnouncementController extends Controller
             }
         }
 
+
+
+
         $announcement = $announcement->paginate(12);
 
         return view('admin.announcement.index', compact('announcement'));
@@ -42,16 +47,24 @@ class AnnouncementController extends Controller
 
     public function index_announcement()
     {
+        $data_from_table1 = ClassArticle::where('status', '1')->take(2)->get();
+        $data_from_table2 = EkstraArticle::where('status', '1')->take(2)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->take(2)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->take(2)->get();
+
+        $all_data = $data_from_table1
+            ->concat($data_from_table2)
+            ->concat($prestation)
+            ->concat($announcement);
+        $recents = $all_data->shuffle()->take(4);
         $announcement = Announcement::where('jenis', 'pengumuman')
             ->where('status', 1)
             ->paginate(10);
-        $recent = Announcement::orderBy('id', 'desc')
-            ->take(4)
-            ->get();
-        return view('user.announcement.announcement', compact('announcement', 'recent'));
+
+        return view('user.announcement.announcement', compact('announcement', 'recents'));
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -184,7 +197,7 @@ class AnnouncementController extends Controller
         //     ->take(4)
         //     ->get();
 
-        return view('user.announcement.show', compact('item', 'moreParagraf'));
+        return   view('user.announcement.show', compact('item', 'moreParagraf'));
     }
 
 

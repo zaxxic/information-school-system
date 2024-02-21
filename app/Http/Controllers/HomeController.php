@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
-        $ekstra = EkstraArticle::where('status', 1)
+        $ekstra = EkstraArticle ::where('status', 1)
             ->orderBy('created_at', 'desc')
             ->take(4)
             ->get();

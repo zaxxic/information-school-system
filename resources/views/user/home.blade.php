@@ -68,7 +68,7 @@
                                     <h2 class="title">Prestasi</h2>
                                 </div>
                                 <div class="view-all-btn">
-                                    <a href="blog.html" class="link-btn">Lihat Semua
+                                    <a href="{{Route('prestation')}}" class="link-btn">Lihat Semua
                                         <span class="svg-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                                 <path
@@ -357,7 +357,7 @@
                                     <h2 class="title">Ekstra</h2>
                                 </div>
                                 <div class="view-all-btn">
-                                    <a href="blog.html" class="link-btn">View All
+                                    <a href="x" class="link-btn">Lihat semua
                                         <span class="svg-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                                 <path

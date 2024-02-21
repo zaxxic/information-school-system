@@ -43,7 +43,7 @@
                                             <div class="blog-post-meta">
                                                 <ul class="list-wrap">
                                                     <li>
-                                                        <i class="flaticon-user"></i>by<a href="author.html">Admin</a>
+                                                        <i class="flaticon-user"></i>by {{ $item->user->name }}
                                                     </li>
                                                     <li>
                                                         <i

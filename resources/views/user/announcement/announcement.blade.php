@@ -36,7 +36,7 @@
                                                     <a href="{{ route('announcement.show', ['slug' => $item->slug]) }}">
                                                         <img src="{{ asset('storage/announcement/' . $item->photo) }}"
                                                             alt="">
-                                                        {{ $item->title }}
+
                                                     </a>
 
                                                 </div>
@@ -102,6 +102,36 @@
                         <div class="col-30">
                             <div class="sidebar-wrap">
 
+                                <div class="sidebar-widget sidebar-widget-two">
+                                    <div class="widget-title mb-30">
+                                        <h6 class="title">Recent News</h6>
+                                        <div class="section-title-line"></div>
+                                    </div>
+                                    <div class="hot-post-wrap">
+                                        @foreach ($recents as $data)
+                                            <div class="hot-post-item">
+                                                <div class="hot-post-thumb">
+
+                                                </div>
+                                                <div class="hot-post-content">
+                                                    <a href=" " class="post-tag">{{ $data->category }}</a>
+                                                    <h4 class="post-title">
+                                                        <a href=" ">{{ $data->title }}</a>
+                                                    </h4>
+                                                    <div class="blog-post-meta">
+                                                        <ul class="list-wrap">
+                                                            <li><i
+                                                                    class="flaticon-calendar"></i>{{ $data->created_at->format('d F, Y') }}
+                                                            </li>
+                                                            <li><i class="flaticon-history"></i>{{ $data->read_time }} Mins
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
 
                                 <div class="sidebar-widget sidebar-widget-two">
                                     <div class="widget-title mb-25">
@@ -118,7 +148,8 @@
                                         </ul>
                                     </div>
                                 </div>
- 
+
+
 
                             </div>
                         </div>

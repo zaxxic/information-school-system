@@ -67,7 +67,7 @@
                     <div class="col-lg-4">
                         <div class="logo text-center">
 
-                            <a href="index.html"><img src="asset/user/assets/img/logo/w_logo.png" alt=""></a>
+                            <a href="index.html"><img src="{{ asset('storage/profile/logo.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -125,40 +125,39 @@
                                                 <a href="#">Kelas</a>
                                                 <ul class="sub-menu">
 
-                                                    <li
-                                                        class="{{ Request::is('kelas/1*') ? 'active' : '' }}">
-                                                        <a href="{{Route('class1')}}">MI kelas 1</a></li>
-                                                    <li
-                                                        class="{{ Request::is('kelas/2*') ? 'active' : '' }}">
-                                                        <a href="{{Route('class2')}}">MI kelas 2</a></li>
-                                                    <li
-                                                        class="{{ Request::is('kelas/3*') ? 'active' : '' }}">
-                                                        <a href="{{Route('class3')}}">MI kelas 3</a></li>
-                                                    <li
-                                                        class="{{ Request::is('kelas/4*') ? 'active' : '' }}">
-                                                        <a href="{{Route('class4')}}">MI kelas 4</a></li>
-                                                    <li
-                                                        class="{{ Request::is('kelas/5*') ? 'active' : '' }}">
-                                                        <a href="{{Route('class5')}}">MI kelas 5</a></li>
-                                                    <li
-                                                        class="{{ Request::is('kelas/6*') ? 'active' : '' }}">
-                                                        <a href="{{Route('class6')}}">MI kelas 6</a></li>
+                                                    <li class="{{ Request::is('kelas/1*') ? 'active' : '' }}">
+                                                        <a href="{{ Route('class1') }}">MI kelas 1</a>
+                                                    </li>
+                                                    <li class="{{ Request::is('kelas/2*') ? 'active' : '' }}">
+                                                        <a href="{{ Route('class2') }}">MI kelas 2</a>
+                                                    </li>
+                                                    <li class="{{ Request::is('kelas/3*') ? 'active' : '' }}">
+                                                        <a href="{{ Route('class3') }}">MI kelas 3</a>
+                                                    </li>
+                                                    <li class="{{ Request::is('kelas/4*') ? 'active' : '' }}">
+                                                        <a href="{{ Route('class4') }}">MI kelas 4</a>
+                                                    </li>
+                                                    <li class="{{ Request::is('kelas/5*') ? 'active' : '' }}">
+                                                        <a href="{{ Route('class5') }}">MI kelas 5</a>
+                                                    </li>
+                                                    <li class="{{ Request::is('kelas/6*') ? 'active' : '' }}">
+                                                        <a href="{{ Route('class6') }}">MI kelas 6</a>
+                                                    </li>
                                                 </ul>
                                             </li>
-                                           
-                                            <li class="menu-item-has-children"><a href="#">Ekstrakurikuler</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog.html">Blog Default</a></li>
-                                                    <li><a href="blog-2.html">Blog Layout 02</a></li>
-                                                    <li><a href="blog-3.html">Blog Layout 03</a></li>
-                                                </ul>
+
+                                            <li
+                                                class="{{ Route::currentRouteName() == 'prestation' ? 'active' : '' }}">
+                                                <a href="{{ route('prestation') }}">Prestasi</a>
                                             </li>
-                                            <li class="{{ Route::currentRouteName() == 'prestation' ? 'active' : '' }}"><a
-                                                    href="{{ route('prestation') }}">Prestasi</a>
+                                            <li
+                                                class="{{ Route::currentRouteNamed('ekstrakurikuler', 'ekstra.show', 'ekstrakurikuler.show_index') ? 'active' : '' }}">
+                                                <a href="{{ route('ekstrakurikuler') }}">Ekstrakurikuler</a>
                                             </li>
-                                            <li class="{{ Route::currentRouteName() == 'announcement' ? 'active' : '' }}"><a
-                                                href="{{ route('announcement') }}">Pengumuman</a>
-                                        </li>
+                                            <li
+                                                class="{{ Route::currentRouteNamed('announcement', 'announcement.show') ? 'active' : '' }}">
+                                                <a href="{{ route('announcement') }}">Pengumuman</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

@@ -97,13 +97,13 @@
                                 @method('DELETE')
                             </form>
                             <form id="acc-form-{{ $item->id }}"
-                                action="{{ route('accepted.announcement', ['id' => $item->id]) }}" method="POST"
+                                action="{{ route('accepted.ekstra', ['id' => $item->id]) }}" method="POST"
                                 style="display: none;">
                                 @csrf
                                 @method('PUT')
                             </form>
                             <form id="deactivate-form-{{ $item->id }}"
-                                action="{{ route('deactive.announcement', ['id' => $item->id]) }}" method="POST"
+                                action="{{ route('deactive.ekstra', ['id' => $item->id]) }}" method="POST"
                                 style="display: none;">
                                 @csrf
                                 @method('PUT')

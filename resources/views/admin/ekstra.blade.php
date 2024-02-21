@@ -150,6 +150,38 @@
 
 
     <script>
+        function confirmAccept(id) {
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin menerima kelas ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Terima!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('acc-form-' + id).submit();
+                }
+            });
+        }
+
+        function deactivate(id) {
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin non kelas ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Terima!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deactivate-form-' + id).submit();
+                }
+            });
+        }
+
         function deleteConfirmation(itemId) {
             Swal.fire({
                 title: 'Apakah kamu yakin?',

@@ -54,9 +54,9 @@ Route::get('/kelas/{id}/{slug}', [ClassUserController::class, 'show'])->name('cl
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/home', [InformationController::class, 'home'])->name('admin.home')->middleware('auth');
-    
+
     Route::post('/update-pass', [UsersController::class, 'update_pass'])->name('change.password');
-    
+
 
     Route::get('/app', function () {
         return view('admin.app');
@@ -88,7 +88,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     Route::middleware(['admin'])->group(function () {
 
-    Route::resource('pengguna', UsersController::class);
+        Route::resource('pengguna', UsersController::class);
 
 
         Route::put('/kelas/acc/{id}', [ApprovalController::class, 'class_acc'])->name('accepted.class');
@@ -96,6 +96,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
         Route::put('/pengumumman/acc/{id}', [ApprovalController::class, 'announcement_acc'])->name('accepted.announcement');
         Route::put('/pengumumman/deactivate/{id}', [ApprovalController::class, 'announcement_deactivate'])->name('deactive.announcement');
+
+        Route::put('/ekstra/acc/{id}', [ApprovalController::class, 'ekstra_acc'])->name('accepted.ekstra');
+        Route::put('/ekstra/deactivate/{id}', [ApprovalController::class, 'ekstra_deactivate'])->name('deactive.ekstra');
 
 
         Route::get('jenis/ekstra/', [EkstraController::class, 'ekstra_index'])->name('ekstrakurikuler.index');
@@ -129,7 +132,11 @@ Route::get('/visi-misi', [InformationController::class, 'index_visi'])->name('vi
 Route::get('/pengumuman', [AnnouncementController::class, 'index_announcement'])->name('announcement');
 Route::get('/prestasi', [PrestationController::class, 'index_prestation'])->name('prestation');
 Route::get('/prestasi/{slug}', [PrestationController::class, 'shows'])->name('prestation.show');
-
 Route::get('/pengumuman/{slug}', [AnnouncementController::class, 'shows'])->name('announcement.show');
+Route::get('/ekstrakurikuler', [EkstraController::class, 'index_ekstra'])->name('ekstrakurikuler');
+Route::get('/ekstrakurikuler/{name}', [EkstraController::class, 'show_index'])->name('ekstrakurikuler.show_index');
+Route::get('/ekstrakurikuler/{slug}', [EkstraController::class, 'shows'])->name('ekstra.show');
+
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

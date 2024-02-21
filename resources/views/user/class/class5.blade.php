@@ -37,7 +37,7 @@
                                                         href="{{ route('class.show', ['id' => $item->class_category_id, 'slug' => $item->slug]) }}">
                                                         <img src="{{ asset('storage/kelas1/' . $item->photo) }}"
                                                             alt="">
-                                                        {{ $item->title }}
+
                                                     </a>
 
                                                 </div>

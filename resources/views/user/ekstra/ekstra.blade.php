@@ -10,7 +10,7 @@
                         <div class="breadcrumb-content">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active">Kelas {{ request()->segment(2) }}
+                                    <li class="breadcrumb-item active">Ekstrakurikuler
                                     </li>
                                 </ol>
                             </nav>
@@ -29,13 +29,12 @@
                         <div class="col-70">
                             <div class="weekly-post-item-wrap-three">
                                 <div class="row">
-                                    @foreach ($classes as $item)
+                                    @foreach ($ekstras as $item)
                                         <div class="col-md-6">
                                             <div class="weekly-post-three">
                                                 <div class="weekly-post-thumb">
-                                                    <a
-                                                        href="{{ route('class.show', ['id' => $item->class_category_id, 'slug' => $item->slug]) }}">
-                                                        <img src="{{ asset('storage/kelas1/' . $item->photo) }}"
+                                                    <a href="{{ route('ekstra.show', ['slug' => $item->slug]) }}">
+                                                        <img src="{{ asset('storage/ekstra/' . $item->photo) }}"
                                                             alt="">
 
                                                     </a>
@@ -43,7 +42,7 @@
                                                 </div>
                                                 <div class="weekly-post-content">
                                                     <h2 class="post-title"><a
-                                                            href="{{ route('class.show', ['id' => $item->class_category_id, 'slug' => $item->slug]) }}">
+                                                            href="{{ route('ekstra.show', ['slug' => $item->slug]) }}">
                                                             {{ $item->title }}
                                                         </a>
 
@@ -72,25 +71,24 @@
                             <div class="pagination-wrap mt-30">
                                 <div class="col-md-12">
                                     <ul class="pagination justify-content-center">
-                                        @if ($classes->currentPage() > 1)
+                                        @if ($ekstras->currentPage() > 1)
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $classes->previousPageUrl() }}"
+                                                <a class="page-link" href="{{ $ekstras->previousPageUrl() }}"
                                                     aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
                                         @endif
 
-                                        @for ($i = 1; $i <= $classes->lastPage(); $i++)
-                                            <li class="page-item {{ $classes->currentPage() == $i ? 'active' : '' }}">
-                                                <a class="page-link"
-                                                    href="{{ $classes->url($i) }}">{{ $i }}</a>
+                                        @for ($i = 1; $i <= $ekstras->lastPage(); $i++)
+                                            <li class="page-item {{ $ekstras->currentPage() == $i ? 'active' : '' }}">
+                                                <a class="page-link" href="{{ $ekstras->url($i) }}">{{ $i }}</a>
                                             </li>
                                         @endfor
 
-                                        @if ($classes->currentPage() < $classes->lastPage())
+                                        @if ($ekstras->currentPage() < $ekstras->lastPage())
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $classes->nextPageUrl() }}"
+                                                <a class="page-link" href="{{ $prestation->nextPageUrl() }}"
                                                     aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
@@ -102,8 +100,28 @@
                         </div>
                         <div class="col-30">
                             <div class="sidebar-wrap">
+                                <div class="sidebar-widget sidebar-widget-two">
+                                    <div class="widget-title mb-25">
+                                        <h2 class="title">Pililh jenis ekstra</h2>
+                                    </div>
+                                    <div class="sidebar-social-wrap">
+                                        <div class="custom-list">
+                                            <div>
+                                                <a href="{{ route('ekstrakurikuler') }}" class="post-tag">Tampilkan
+                                                    semua</a>
+                                            </div>
+                                            @foreach ($ekstra as $item)
+                                                <div>
+                                                    <a href="{{ route('ekstrakurikuler.show_index', ['name' => $item->name]) }}"
+                                                        class="post-tag">{{ $item->name }}</a>
+                                                </div>
+                                            @endforeach
 
+                                        </div>
 
+                                    </div>
+                                </div>
+                                @include('user.recents')
                                 <div class="sidebar-widget sidebar-widget-two">
                                     <div class="widget-title mb-25">
                                         <h2 class="title">Subscribe & Followers</h2>
@@ -119,7 +137,6 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @include('user.class.recent')
 
 
                             </div>

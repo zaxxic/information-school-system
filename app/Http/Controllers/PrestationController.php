@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\ClassArticle;
+use App\Models\EkstraArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +16,8 @@ class PrestationController extends Controller
     public function index(Request $request)
     {
         $prestation = Announcement::where('jenis', 'prestasi');
+
+        
 
         if ($request->has('filter')) {
             $dates = explode(' - ', $request->filter);
@@ -40,21 +44,33 @@ class PrestationController extends Controller
     {
         $item = Announcement::where('slug', $slug)->firstOrFail();
         $moreParagraf = $item->more;
-        // $recent = Announcement::orderBy('id', 'desc')
-        //     ->take(4)
-        //     ->get();
 
-        return view('user.announcement.show', compact('item', 'moreParagraf'));
+        $data_from_table2 = EkstraArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
+
+        $recents = $data_from_table2
+            ->concat($prestation)
+            ->concat($announcement);
+        return view('user.announcement.show', compact('item', 'moreParagraf', 'recents'));
     }
     public function index_prestation()
     {
-        $prestation = Announcement::where('jenis', 'prestasi')
+
+        $prestations = Announcement::where('jenis', 'prestasi')
             ->where('status', 1)
             ->paginate(10);
-        $recent = Announcement::orderBy('id', 'desc')
-            ->take(4)
-            ->get();
-        return view('user.prestation.prestation', compact('prestation', 'recent'));
+
+
+        $data_from_table2 = EkstraArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
+
+        $recents = $data_from_table2
+            ->concat($prestation)
+            ->concat($announcement);
+
+        return view('user.prestation.prestation', compact('prestations', 'recents'));
     }
     public function create()
     {

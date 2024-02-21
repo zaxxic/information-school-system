@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
+use App\Models\ClassArticle;
 use App\Models\Ekstra;
 use App\Models\EkstraArticle;
 use Illuminate\Http\Request;
@@ -17,16 +19,68 @@ class EkstraController extends Controller
         $ekstras = Ekstra::get();
         return view('admin.ekstra', compact('ekstras'));
     }
+
+    public function index_ekstra()
+    {
+        $data_from_table2 = EkstraArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
+
+        $recents = $data_from_table2
+            ->concat($prestation)
+            ->concat($announcement);
+        $ekstra = Ekstra::get();
+
+        $ekstras = EkstraArticle::where('status', '1')->paginate(12);
+
+        return view('user.ekstra.ekstra', compact('ekstras', 'recents', 'ekstra'));
+    }
+
+    public function show_index($name)
+    {
+        $data_from_table2 = EkstraArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
+
+        $recents = $data_from_table2
+            ->concat($prestation)
+            ->concat($announcement);
+        $ekstra = Ekstra::get();
+        $ekstras = EkstraArticle::where('status', '1')
+            ->whereHas('name_ekstra', function ($query) use ($name) {
+                $query->where('name', $name);
+            })
+            ->paginate(12);
+        return view('user.ekstra.ekstra', compact('ekstras', 'recents', 'ekstra'));
+    }
+    public function shows($slug)
+    {
+        $item = EkstraArticle::where('slug', $slug)->firstOrFail();
+        $moreParagraf = $item->more;
+
+        $data_from_table1 = ClassArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $data_from_table2 = EkstraArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
+
+        $recents = $data_from_table1
+            ->concat($data_from_table2)
+            ->concat($prestation)
+            ->concat($announcement);
+
+
+        return   view('user.ekstra.show', compact('item', 'moreParagraf', 'recents'));
+    }
     public function ekstra_create(Request $request)
     {
         try {
             $validator = $request->validate([
-                'name' => 'required|string|max:255',
+                'name' => 'required|string|max:255|unique:ekstras',
             ], [
                 'name.required' => 'Nama harus diisi.',
                 'name.string' => 'Nama harus berupa teks.',
                 'name.max' => 'Nama tidak boleh lebih dari :max karakter.',
-
+                'name.unique' => 'Nama sudah ada dalam basis data.',
             ]);
         } catch (ValidationException $e) {
             $validator = $e->validator;
@@ -36,6 +90,7 @@ class EkstraController extends Controller
                 ->withErrors($validator)
                 ->with('error', 'There are validation errors. Please check the form.');
         }
+
         $user = new Ekstra;
         $user->name = $request->name;
 
@@ -43,6 +98,7 @@ class EkstraController extends Controller
 
         return redirect()->back()->with('success', 'Ekstra berhasil ditambahkan.');
     }
+
 
     public function ekstra_edit(Request $request, $id)
     {
@@ -225,7 +281,7 @@ class EkstraController extends Controller
         $ekstras = Ekstra::get();
         $data = $ekstrakurikuler->more;
 
-        return view('admin.ekstra.edit', compact('ekstrakurikuler', 'data','ekstras'));
+        return view('admin.ekstra.edit', compact('ekstrakurikuler', 'data', 'ekstras'));
     }
 
     public function update(Request $request, $id)
@@ -254,7 +310,7 @@ class EkstraController extends Controller
                     'title.string' => 'Kolom Judul harus berupa teks',
                     'title.unique' => 'Judul sudah digunakan.',
                     'ekstra_id.required' => 'Ekstra harus di isi',
-                    'ekstra_id.exists' => 'Ekstra tidak ada', 
+                    'ekstra_id.exists' => 'Ekstra tidak ada',
                     'photo.image' => 'Setiap file foto harus berupa gambar',
                     'photo.mimes' => 'Format setiap file foto harus jpeg, png, atau jpg',
                     'photo.max' => 'Ukuran setiap file foto maksimal 2048 KB',

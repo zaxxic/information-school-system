@@ -12,7 +12,7 @@
                                 <ol class="breadcrumb">
 
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a href="{{ route('announcement') }}">Pengumumman</a>
+                                        <a href="{{ route('ekstrakurikuler') }}">Ekstrakurikuler</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
                                         {{ $item->title }}
@@ -133,7 +133,6 @@
                         <div class="col-30">
                             <div class="sidebar-wrap">
 
-                                @include('user.recents')
 
                                 <div class="sidebar-widget sidebar-widget-two">
                                     <div class="widget-title mb-25">

@@ -29,14 +29,14 @@
                         <div class="col-70">
                             <div class="weekly-post-item-wrap-three">
                                 <div class="row">
-                                    @foreach ($prestation as $item)
+                                    @foreach ($prestations as $item)
                                         <div class="col-md-6">
                                             <div class="weekly-post-three">
                                                 <div class="weekly-post-thumb">
                                                     <a href="{{ route('prestation.show', ['slug' => $item->slug]) }}">
                                                         <img src="{{ asset('storage/announcement/' . $item->photo) }}"
                                                             alt="">
-                                                        {{ $item->title }}
+
                                                     </a>
 
                                                 </div>
@@ -71,25 +71,25 @@
                             <div class="pagination-wrap mt-30">
                                 <div class="col-md-12">
                                     <ul class="pagination justify-content-center">
-                                        @if ($prestation->currentPage() > 1)
+                                        @if ($prestations->currentPage() > 1)
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $prestation->previousPageUrl() }}"
+                                                <a class="page-link" href="{{ $prestations->previousPageUrl() }}"
                                                     aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
                                         @endif
 
-                                        @for ($i = 1; $i <= $prestation->lastPage(); $i++)
-                                            <li class="page-item {{ $prestation->currentPage() == $i ? 'active' : '' }}">
+                                        @for ($i = 1; $i <= $prestations->lastPage(); $i++)
+                                            <li class="page-item {{ $prestations->currentPage() == $i ? 'active' : '' }}">
                                                 <a class="page-link"
-                                                    href="{{ $prestation->url($i) }}">{{ $i }}</a>
+                                                    href="{{ $prestations->url($i) }}">{{ $i }}</a>
                                             </li>
                                         @endfor
 
-                                        @if ($prestation->currentPage() < $prestation->lastPage())
+                                        @if ($prestations->currentPage() < $prestations->lastPage())
                                             <li class="page-item">
-                                                <a class="page-link" href="{{ $prestation->nextPageUrl() }}"
+                                                <a class="page-link" href="{{ $prestations->nextPageUrl() }}"
                                                     aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
@@ -102,7 +102,7 @@
                         <div class="col-30">
                             <div class="sidebar-wrap">
 
-
+                                @include('user.recents')
                                 <div class="sidebar-widget sidebar-widget-two">
                                     <div class="widget-title mb-25">
                                         <h2 class="title">Subscribe & Followers</h2>
@@ -118,8 +118,6 @@
                                         </ul>
                                     </div>
                                 </div>
- 
-
                             </div>
                         </div>
                     </div>
