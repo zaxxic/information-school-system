@@ -147,7 +147,7 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['prestation.index', 'prestation.create','prestation.edit']) ? 'active' : '' }}"
+                            <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['prestation.index', 'prestation.create', 'prestation.edit']) ? 'active' : '' }}"
                                 href="{{ Route('prestation.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file-text"></i>
@@ -155,8 +155,10 @@
                                 <span class="hide-menu">Prestasi</span>
                             </a>
                         </li>
-                        <li class="sidebar-item  {{ Route::currentRouteName() == 'ekstra.index' ? 'active' : '' }}">
-                            <a class="sidebar-link " href="{{ Route('ekstra.index') }}" aria-expanded="false">
+                        <li
+                            class="sidebar-item  {{ Route::currentRouteNamed('ekstra.index', 'ekstra.create') ? 'active' : '' }}">
+                            <a class="sidebar-link {{ Route::currentRouteNamed('ekstra.index', 'ekstra.create', 'ekstra.edit') ? 'active' : '' }}"
+                                href="{{ Route('ekstra.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chart-donut-3"></i>
                                 </span>

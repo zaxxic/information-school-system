@@ -139,28 +139,37 @@ class EkstraController extends Controller
 
     public function index(Request $request)
     {
-        $ekstra = new EkstraArticle();
+        $ekstra = EkstraArticle::query();
 
-        if ($request->has('filter')) {
-            $dates = explode(' - ', $request->filter);
-            if (count($dates) === 2) {
-                $startDate = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay();
-                $endDate = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay();
+        if ($request->has('ekstra')) {
+            $ekstraId = $request->ekstra;
+            if ($ekstraId != null) {
+                $ekstra->where('ekstra_id', $ekstraId);
+            } else {
+                if ($request->has('filter')) {
+                    $dates = explode(' - ', $request->filter);
+                    if (count($dates) === 2) {
+                        $startDate = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay();
+                        $endDate = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay();
 
-                $ekstra->whereBetween('created_at', [$startDate, $endDate]);
-            }
-        }
+                        $ekstra->whereBetween('created_at', [$startDate, $endDate]);
+                    }
+                }
 
-        if ($request->has('title')) {
-            $query = $request->title;
-            if ($query != null) {
-                $ekstra->where('title', 'like', "%$query%");
+                if ($request->has('title')) {
+                    $query = $request->title;
+                    if ($query != null) {
+                        $ekstra->where('title', 'like', "%$query%");
+                    }
+                }
             }
         }
 
         $ekstra = $ekstra->paginate(12);
 
-        return view('admin.ekstra.index', compact('ekstra'));
+        $ekstras = Ekstra::get();
+
+        return view('admin.ekstra.index', compact('ekstra', 'ekstras'));
     }
     public function create()
     {

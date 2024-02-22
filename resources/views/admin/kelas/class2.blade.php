@@ -19,6 +19,7 @@
                     <form id="filterForm" action="{{ Route('kelas1.index') }}" method="get">
                         <input id="dateRangePicker" type="text" class="form-control chat-search-input"
                             aria-describedby="basic-addon-search31" name="filter" value="">
+                        <input type="hidden" name="title" value="{{ request('title') }}">
                     </form>
                 </div>
 
@@ -30,6 +31,7 @@
                             <input name="title" type="text" class="form-control chat-search-input"
                                 placeholder="Cari Berita..." aria-label="Cari nama tim..."
                                 aria-describedby="basic-addon-search31" value="">
+                            <input type="hidden" name="filter" value="{{ request('filter') }}">
                         </div>
                     </form>
                 </div>
@@ -49,7 +51,8 @@
                                     <label class="text-success ms-1"> Aktif</label>
                                 @endif
                             </div>
-                            <dfn>{{ $item->user->role }}</dfn>
+                            <dfn>{{ $item->user->name }} Sebagai {{ $item->user->role }}</dfn>
+                            <p>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}</p>
                             <p class="card-text">
 
                             </p>

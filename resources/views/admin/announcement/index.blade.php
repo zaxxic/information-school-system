@@ -17,8 +17,10 @@
                 <div class="filter col-lg-3 col-md-3 col-sm-3">
                     <label for="dateRangePicker" class="form-label">Filter tanggal</label>
                     <form id="filterForm" method="get">
-                        <input name="nama_tim" id="dateRangePicker" type="text" class="form-control chat-search-input"
-                            aria-describedby="basic-addon-search31" value="">
+                        <input id="dateRangePicker" type="text" class="form-control chat-search-input"
+                            aria-describedby="basic-addon-search31" name="filter" value="">
+                        <input type="hidden" name="title" value="{{ request('title') }}">
+
                     </form>
                 </div>
 
@@ -27,11 +29,12 @@
                     <form method="get">
                         <div class="flex-grow-1 input-group input-group-merge">
                             <span class="input-group-text" id="basic-addon-search31"><i class="ti ti-search"></i></span>
-                            <input name="nama_tim" type="text" class="form-control chat-search-input"
+                            <input name="title" type="text" class="form-control chat-search-input"
                                 placeholder="Cari Berita..." aria-label="Cari nama tim..."
                                 aria-describedby="basic-addon-search31" value="">
+                            <input type="hidden" name="filter" value="{{ request('filter') }}">
                         </div>
-                        <input type="hidden" name="status_tim" value="">
+                        <input type="hidden" name="filter" value="">
                     </form>
                 </div>
             </div>
@@ -49,7 +52,8 @@
                                     <label class="text-success ms-1"> Aktif</label>
                                 @endif
                             </div>
-                            <dfn>{{ $item->user->role }}</dfn>
+                            <dfn>{{ $item->user->name }} Sebagai {{ $item->user->role }}</dfn>
+                            <p>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}</p>
                             <p class="card-text mt-1">
 
                             </p>

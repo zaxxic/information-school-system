@@ -7,7 +7,7 @@
         <div class="row">
             <div class="d-flex justify-content-between">
                 <div class="card-header fs-4">
-                    Berita kelas 1
+                    Berita Ekstra
                 </div>
                 <div id="buatTim" class="d-flex align-items-end">
                     <a class="btn btn-primary" href="{{ Route('ekstra.create') }}">Buat Berita</a>
@@ -17,21 +17,40 @@
                 <div class="filter col-lg-3 col-md-3 col-sm-3">
                     <label for="dateRangePicker" class="form-label">Filter tanggal</label>
                     <form id="filterForm" method="get">
-                        <input name="nama_tim" id="dateRangePicker" type="text" class="form-control chat-search-input"
-                            aria-describedby="basic-addon-search31" value="">
+                        <input id="dateRangePicker" type="text" class="form-control chat-search-input"
+                            aria-describedby="basic-addon-search31" name="filter" value="">
+                        <input type="hidden" name="title" value="{{ request('title') }}">
+                        <input type="hidden" name="ekstra" value="{{ request('ekstra') }}">
                     </form>
                 </div>
 
+                <div class="filter col-lg-3 col-md-3 col-sm-3">
+                    <label class="form-label">Filter </label>
+                    <form id="myForm" method="get">
+                        <select name="ekstra" class="form-control" onchange="submitForm()">
+                            <option value="" selected disabled>Pilih Jenis Ekstra</option>
+                            <option value="">Pilih semua</option>
+                            @foreach ($ekstras as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        <input type="hidden" name="title" value="{{ request('title') }}">
+                        <input type="hidden" name="filter" value="{{ request('filter') }}">
+
+                    </form>
+                </div>
                 <div class="filter col-lg-3 col-md-3 col-sm-3">
                     <label for="select2Basic" class="form-label">Cari</label>
                     <form method="get">
                         <div class="flex-grow-1 input-group input-group-merge">
                             <span class="input-group-text" id="basic-addon-search31"><i class="ti ti-search"></i></span>
-                            <input name="nama_tim" type="text" class="form-control chat-search-input"
+                            <input name="title" type="text" class="form-control chat-search-input"
                                 placeholder="Cari Berita..." aria-label="Cari nama tim..."
                                 aria-describedby="basic-addon-search31" value="">
+                            <input type="hidden" name="filter" value="{{ request('filter') }}">
+                            <input type="hidden" name="ekstra" value="{{ request('ekstra') }}">
+
                         </div>
-                        <input type="hidden" name="status_tim" value="">
                     </form>
                 </div>
             </div>
@@ -49,9 +68,10 @@
                                     <label class="text-success ms-1"> Aktif</label>
                                 @endif
                             </div>
-                            <dfn>{{ $item->user->role }}</dfn>
+                            <dfn>{{ $item->user->name }} Sebagai {{ $item->user->role }}</dfn>
+                            <p>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}</p>
                             <p class="card-text mt-1">
-                               Jenis ekstra = {{ $item->name_ekstra->name }}
+                                Jenis ekstra : {{ $item->name_ekstra->name }}
                             </p>
                             <div class="row d-flex justify-content-between">
                                 @if ($item->status == 1)
@@ -118,6 +138,11 @@
         </div>
     @endsection
     @section('script')
+        <script>
+            function submitForm() {
+                document.getElementById("myForm").submit();
+            }
+        </script>
         <script>
             function confirmAccept(id) {
                 Swal.fire({

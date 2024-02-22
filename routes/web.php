@@ -68,6 +68,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('prestation', PrestationController::class);
     Route::resource('ekstra', EkstraController::class);
 
+
     // Route::resource('kelas1', Class1Controller::class);
 
     Route::get('/kelas1', [Class1Controller::class, 'index1'])->name('kelas1.index');

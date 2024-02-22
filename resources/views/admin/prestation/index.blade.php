@@ -17,8 +17,9 @@
                 <div class="filter col-lg-3 col-md-3 col-sm-3">
                     <label for="dateRangePicker" class="form-label">Filter tanggal</label>
                     <form id="filterForm" method="get">
-                        <input name="nama_tim" id="dateRangePicker" type="text" class="form-control chat-search-input"
-                            aria-describedby="basic-addon-search31" value="">
+                        <input id="dateRangePicker" type="text" class="form-control chat-search-input"
+                            aria-describedby="basic-addon-search31" name="filter" value="">
+                        <input type="hidden" name="title" value="{{ request('title') }}">
                     </form>
                 </div>
 
@@ -44,14 +45,15 @@
                             <div class="d-flex">
                                 <h4 class="card-title">{{ $item->title }}</h4>
                                 @if ($item->status == 0)
-                                    <label class="text-danger"> Tidak aktif</label>
+                                    <label class="text-danger ms-1"> Tidak aktif</label>
                                 @else
-                                    <label class="text-success "> Aktif</label>
+                                    <label class="text-success  ms-1"> Aktif</label>
                                 @endif
                             </div>
                             <dfn>{{ $item->user->name }} Sebagai {{ $item->user->role }}</dfn>
+                            <p>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}</p>
                             <p class="card-text mt-1">
-                                
+
                             </p>
                             <div class="row d-flex justify-content-between">
                                 @if ($item->status == 1)
@@ -91,8 +93,8 @@
 
                             </div>
                             <form id="delete-form-{{ $item->id }}"
-                                action="{{ route('prestation.destroy', ['prestation' => $item->id]) }}"
-                                method="POST" style="display: none;">
+                                action="{{ route('prestation.destroy', ['prestation' => $item->id]) }}" method="POST"
+                                style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>

@@ -105,7 +105,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="d-flex align-items-center justify-content-between mt-4">
-                                                            <h3 class="mb-0 fs-6">Total Berita</h3>
+                                                            <h3 class="mb-0 fs-6">Total Berita Ekstra</h3>
                                                             <span class="fw-bold fs-6">
                                                                 @isset($ekstra_count)
                                                                     {{ $ekstra_count }}
