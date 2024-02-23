@@ -10,15 +10,12 @@ $(function () {
             $(this).slideDown();
         },
         hide: function (remove) {
-            if (confirm("Are you sure you want to remove this item?")) {
+            if (confirm("Apakah kamu yakin mengahpus teks ini")) {
                 $(this).slideUp(remove);
             }
         },
     });
 });
-
-
-
 
 var room = 1;
 

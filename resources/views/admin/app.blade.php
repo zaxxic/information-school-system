@@ -5,7 +5,7 @@
 
 <head>
     <!--  Title -->
-    <title>Mordenize</title>
+    <title>Admin MI Al-Aziz</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +18,7 @@
     <!--  Favicon -->
     @yield('link')
     <link rel="shortcut icon" type="image/png"
-        href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" />
+        href="{{ asset('storage/profile/logo_s.png') }}" />
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="{{ asset('asset/admin/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.all.min.js"></script>
@@ -30,12 +30,12 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
+        <img src="{{ asset('storage/profile/logo_s.png') }}"
             alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico"
+        <img src="{{ asset('storage/profile/logo_s.png') }}"
             alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!-- Body Wrapper -->
@@ -47,7 +47,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="index-2.html" class="text-nowrap logo-img">
-                        <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg"
+                        <img src="{{ asset('storage/profile/logo.png') }}"
                             class="dark-logo" width="180" alt="" />
                         <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg"
                             class="light-logo" width="180" alt="" />
@@ -64,7 +64,7 @@
                         <!-- ============================= -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Home</span>
+                            <span class="hide-menu">Beranda</span>
                         </li>
                         <!-- =================== -->
                         <!-- Dashboard -->
@@ -75,7 +75,7 @@
                                 <span>
                                     <i class="ti ti-home"></i>
                                 </span>
-                                <span class="hide-menu">Home</span>
+                                <span class="hide-menu">Beranda</span>
                             </a>
                         </li>
 

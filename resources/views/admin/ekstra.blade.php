@@ -17,17 +17,18 @@
                 <thead>
                     <!-- start row -->
                     <tr>
-                        <th>Nama</th>
-                        <th>Aksi</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Hapus</th>
                     </tr>
                     <!-- end row -->
                 </thead>
                 <tbody>
                     @foreach ($ekstras as $item)
                         <tr>
-                            <td>{{ $item->name }}</td>
+                            <td class="text-center">{{ $item->name }}</td>
 
-                            <td>
+                            <td class="text-center">
                                 <a href="#" onclick="deleteConfirmation({{ $item->id }})"
                                     class="btn btn-sm btn-danger col-6">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
@@ -43,6 +44,8 @@
                                     @csrf
                                     @method('DELETE')
                                 </form>
+                            </td>
+                            <td class="text-center">
                                 <button id="modalEditTrigger"
                                     data-route="{{ Route('ekstrakurikuler.edit', ['id' => $item->id]) }}"
                                     data-id="{{ $item->id }}"

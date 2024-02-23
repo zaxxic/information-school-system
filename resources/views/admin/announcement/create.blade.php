@@ -21,7 +21,7 @@
                     <div class="mb-3">
                         <input type="text" name="title" class="form-control" placeholder="Name" />
                     </div>
-                     
+
                     <label class="mt-3" for="msg">Photo <label style="color: red;font-size: 22px">*</label></label>
                     <div class="mb-3">
                         <input type="file" name="photo" class="form-control" placeholder="Name" />
@@ -60,7 +60,7 @@
                         </div>
                         <button type="button" data-repeater-create="" class="btn btn-info waves-effect waves-light">
                             <div class="d-flex align-items-center">
-                                Add Text Area
+                                Tambahkan Teks Area
                                 <i class="ti ti-circle-plus ms-1 fs-5"></i>
                             </div>
                         </button>

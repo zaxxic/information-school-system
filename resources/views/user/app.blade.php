@@ -6,11 +6,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Zaira - News Magazine HTML Template</title>
+    <title>Mi Al-Aziz</title>
     <meta name="description" content="Zaira - News Magazine HTML Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/profile/logo_s.png') }}">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -31,14 +31,14 @@
 <body>
 
     <!-- preloader -->
-    {{-- <div id="preloader">
+    <div id="preloader">
         <div class="loader-inner">
             <div id="loader">
-                <h2 id="bg-loader">zaira<span>.</span></h2>
-                <h2 id="fg-loader">zaira<span>.</span></h2>
+                <h2 id="bg-loader">Mi-Alziz<span>.</span></h2>
+                <h2 id="fg-loader">Mi-Alziz<span>.</span></h2>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- preloader-end -->
 
     <!-- Dark/Light-toggle -->
@@ -96,7 +96,7 @@
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">
                                             <li class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}"><a
-                                                    href="{{ route('home') }}">Home</a>
+                                                    href="{{ route('home') }}">Beranda</a>
                                             </li>
                                             <li class="menu-item-has-children"><a href="#">MI Al-aziz</a>
                                                 <ul class="sub-menu">

@@ -13,10 +13,8 @@
 
         </ul>
         <div class="d-block d-lg-none">
-            <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg"
-                class="dark-logo" width="180" alt="" />
-            <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg"
-                class="light-logo" width="180" alt="" />
+            <img src="{{ asset('storage/profile/logo.png') }}" class="dark-logo" width="180" alt="" />
+            <img src="{{ asset('storage/profile/logo.png') }}" class="light-logo" width="180" alt="" />
         </div>
         <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +45,7 @@
                             aria-labelledby="drop1">
                             <div class="profile-dropdown position-relative" data-simplebar>
                                 <div class="py-3 px-7 pb-0">
-                                    <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
+                                    <h5 class="mb-0 fs-5 fw-semibold">Profil Pengguna</h5>
                                 </div>
                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
                                     <img src="{{ asset('storage/profile/images.png') }}" class="rounded-circle"
@@ -62,7 +60,7 @@
                                 </div>
 
                                 <div class="d-grid py-4 px-7 pt-8">
-                                    <div
+                                    {{-- <div
                                         class="upgrade-plan bg-light-primary position-relative overflow-hidden rounded-4 p-4 mb-9">
                                         <div class="row">
                                             <form action="{{ route('change.password') }}" method="POST">
@@ -94,13 +92,13 @@
                                             </form>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
+                                    <a href="" class="btn btn-outline-primary mb-2 ">Ganti Password</a>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"
                                         class="btn btn-outline-primary">Log Out</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>

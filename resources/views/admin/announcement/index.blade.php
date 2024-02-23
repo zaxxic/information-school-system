@@ -117,6 +117,34 @@
                 </div>
             @endforeach
 
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="pagination justify-content-center">
+                        @if ($announcement->currentPage() > 1)
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $announcement->previousPageUrl() }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        @endif
+
+                        @for ($i = 1; $i <= $announcement->lastPage(); $i++)
+                            <li class="page-item {{ $announcement->currentPage() == $i ? 'active' : '' }}">
+                                <a class="page-link" href="{{ $announcement->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+
+                        @if ($announcement->currentPage() < $announcement->lastPage())
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $announcement->nextPageUrl() }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+
 
 
         </div>

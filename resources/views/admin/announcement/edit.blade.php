@@ -100,7 +100,7 @@
                         </div>
                         <button type="button" data-repeater-create="" class="btn btn-info waves-effect waves-light">
                             <div class="d-flex align-items-center">
-                                Add Text Area
+                                Tambahkan Teks Area
                                 <i class="ti ti-circle-plus ms-1 fs-5"></i>
                             </div>
                         </button>
