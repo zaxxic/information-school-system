@@ -53,8 +53,10 @@ Route::prefix('kelas')->group(function () {
 Route::get('/kelas/{id}/{slug}', [ClassUserController::class, 'show'])->name('class.show');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
-    Route::get('/home', [InformationController::class, 'home'])->name('admin.home')->middleware('auth');
-
+    Route::get('/home', [InformationController::class, 'home'])->name('admin.home');
+    Route::get('/kelas/guru', [UsersController::class, 'teacher'])->name('home.teacher');
+    
+    Route::get('/password', [UsersController::class, 'change_index'])->name('admin.change');
     Route::post('/update-pass', [UsersController::class, 'update_pass'])->name('change.password');
 
 
@@ -70,14 +72,16 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 
     // Route::resource('kelas1', Class1Controller::class);
-
+    Route::get('/guru', [Class1Controller::class, 'teacher'])->name('teacher.index');
+    Route::get('/guru/kelas', [Class1Controller::class, 'create_class'])->name('kelas.create');
+    Route::post('/guru/store', [Class1Controller::class, 'store_teacher'])->name('kelas.store');
+    
     Route::get('/kelas1', [Class1Controller::class, 'index1'])->name('kelas1.index');
     Route::get('/kelas2', [Class1Controller::class, 'index2'])->name('kelas2.index');
     Route::get('/kelas3', [Class1Controller::class, 'index3'])->name('kelas3.index');
     Route::get('/kelas4', [Class1Controller::class, 'index4'])->name('kelas4.index');
     Route::get('/kelas5', [Class1Controller::class, 'index5'])->name('kelas5.index');
     Route::get('/kelas6', [Class1Controller::class, 'index6'])->name('kelas6.index');
-    Route::post('/filter', [Class1Controller::class, 'filter'])->name('filter');
 
     Route::get('/kelas/create', [Class1Controller::class, 'create'])->name('kelas1.create');
     Route::get('/kelas/edit/{id}', [Class1Controller::class, 'edit'])->name('kelas1.edit');
@@ -136,7 +140,7 @@ Route::get('/prestasi/{slug}', [PrestationController::class, 'shows'])->name('pr
 Route::get('/pengumuman/{slug}', [AnnouncementController::class, 'shows'])->name('announcement.show');
 Route::get('/ekstrakurikuler', [EkstraController::class, 'index_ekstra'])->name('ekstrakurikuler');
 Route::get('/ekstrakurikuler/{name}', [EkstraController::class, 'show_index'])->name('ekstrakurikuler.show_index');
-Route::get('/ekstrakurikuler/{slug}', [EkstraController::class, 'shows'])->name('ekstra.show');
+Route::get('/ekstra/{slug}', [EkstraController::class, 'shows'])->name('ekstra.shows');
 
 
 

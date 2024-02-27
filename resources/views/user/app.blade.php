@@ -16,17 +16,14 @@
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('asset/user/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/user/assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/user/assets/css/magnific-popup.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('asset/user/assets/css/magnific-popup.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('asset/user/assets/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/user/assets/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/user/assets/css/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/user/assets/css/swiper-bundle.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('asset/user/assets/css/slick.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('asset/user/assets/css/swiper-bundle.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('asset/user/assets/css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/user/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/user/assets/css/responsive.css') }}">
-
-    {{-- <link rel="stylesheet"
-        href="{{ asset('assets/vendor/fonts/tabler-iconsea04.css?id=6ad8bc28559d005d792d577cf02a2116') }}" />    </head> --}}
 
 <body>
 
@@ -151,7 +148,7 @@
                                                 <a href="{{ route('prestation') }}">Prestasi</a>
                                             </li>
                                             <li
-                                                class="{{ Route::currentRouteNamed('ekstrakurikuler', 'ekstra.show', 'ekstrakurikuler.show_index') ? 'active' : '' }}">
+                                                class="{{ Route::currentRouteNamed('ekstrakurikuler', 'ekstra.show', 'ekstrakurikuler.show_index','ekstra.shows') ? 'active' : '' }}">
                                                 <a href="{{ route('ekstrakurikuler') }}">Ekstrakurikuler</a>
                                             </li>
                                             <li
@@ -384,15 +381,14 @@
     <!-- JS here -->
     <script src="{{ asset('asset/user/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('asset/user/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('asset/user/assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('asset/user/assets/js/slick.min.js') }}"></script>
-    <script src="{{ asset('asset/user/assets/js/swiper-bundle.js') }}"></script>
-    <script src="{{ asset('asset/user/assets/js/ajax-form.js') }}"></script>
-    <script src="{{ asset('asset/user/assets/js/wow.min.js') }}"></script>
+    {{-- <script src="{{ asset('asset/user/assets/js/jquery.magnific-popup.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('asset/user/assets/js/slick.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('asset/user/assets/js/swiper-bundle.js') }}"></script> --}}
+    {{-- <script src="{{ asset('asset/user/assets/js/ajax-form.js') }}"></script> --}}
+    {{-- <script src="{{ asset('asset/user/assets/js/wow.min.js') }}"></script> --}}
     <script src="{{ asset('asset/user/assets/js/main.js') }}"></script>
 
 </body>
 
-<!-- Mirrored from themegenix.net/html/zaira/index-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Dec 2023 07:14:39 GMT -->
 
 </html>

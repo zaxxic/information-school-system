@@ -78,7 +78,7 @@
 
                                     <div class="blog-details-thumb">
 
-                                        <img src="{{ asset('storage/announcement/' . $item->photo) }}" alt="">
+                                        <img src="{{ asset('storage/ekstra/' . $item->photo) }}" alt="">
                                     </div>
                                     <p class="first-info">
                                         {{ $item->paragraf1 }}
@@ -91,7 +91,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-12">
                                                     <div class="blog-details-inner-img">
-                                                        <img src="{{ asset('storage/announcement/' . $item->foto) }}"
+                                                        <img src="{{ asset('storage/ekstra/' . $item->foto) }}"
                                                             alt="" />
                                                     </div>
                                                 </div>
@@ -119,7 +119,7 @@
                                         <div class="  mb-2" style="width: 100%; height: 400px;">
                                             <video controls style="width: 100%; height: 400px; object-fit: contain;"
                                                 id="photo">
-                                                <source src="{{ asset('storage/kelas1/' . ($item->video ?? '')) }}"
+                                                <source src="{{ asset('storage/ekstra/' . ($item->video ?? '')) }}"
                                                     type="video/mp4">
 
                                                 Maaf, browser Anda tidak mendukung pemutaran video.

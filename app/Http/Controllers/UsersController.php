@@ -22,6 +22,7 @@ class UsersController extends Controller
         return view('admin.users', compact('users'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -40,7 +41,7 @@ class UsersController extends Controller
             $validator = $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users|max:255',
-                'role' => 'required|in:Guru,Ekstra,OSIS',
+                'role' => 'required|in:1,2,3,4,5,6',
                 'phone' => 'required|string|max:15 ',
             ], [
                 'name.required' => 'Nama harus diisi.',
@@ -92,6 +93,11 @@ class UsersController extends Controller
     public function edit(string $id)
     {
         //
+    }
+
+    public function change_index()
+    {
+        return view('admin.ganti');
     }
 
     public function update_pass(Request $request)

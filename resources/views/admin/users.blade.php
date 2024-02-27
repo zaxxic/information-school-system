@@ -94,14 +94,17 @@
                             <div class="mb-3">
                                 <input type="text" name="email" class="form-control" placeholder="Name" />
                             </div>
-                            <label for="msg">Role <label style="color: red;font-size: 22px">*</label>
+                            <label for="msg">Pilih Kelas Guru <label style="color: red;font-size: 22px">*</label>
                             </label>
                             <div class="mb-3">
                                 <select name="role" class="form-control" id="">
-                                    <option value="">Pilih role</option>
-                                    <option value="Guru">Guru</option>
-                                    <option value="Ekstra">Ekstra</option>
-                                    <option value="OSIS">OSIS</option>
+                                    <option value="">Pilih Kelas Guru</option>
+                                    <option value="1">Guru kelas 1</option>
+                                    <option value="2">Guru kelas 2</option>
+                                    <option value="3">Guru kelas 3</option>
+                                    <option value="4">Guru kelas 4</option>
+                                    <option value="5">Guru kelas 5</option>
+                                    <option value="6">Guru kelas 6</option>
                                 </select>
                             </div>
                             <label for="msg">Nomer Telepon <label style="color: red;font-size: 22px">*</label>

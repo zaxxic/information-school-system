@@ -33,7 +33,7 @@
                                         <div class="col-md-6">
                                             <div class="weekly-post-three">
                                                 <div class="weekly-post-thumb">
-                                                    <a href="{{ route('ekstra.show', ['slug' => $item->slug]) }}">
+                                                    <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}">
                                                         <img src="{{ asset('storage/ekstra/' . $item->photo) }}"
                                                             alt="">
 
@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="weekly-post-content">
                                                     <h2 class="post-title"><a
-                                                            href="{{ route('ekstra.show', ['slug' => $item->slug]) }}">
+                                                            href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}">
                                                             {{ $item->title }}
                                                         </a>
 
@@ -103,18 +103,20 @@
                                 <div class="sidebar-widget sidebar-widget-two">
                                     <div class="widget-title mb-25">
                                         <h2 class="title">Pililh jenis ekstra</h2>
+                                        <div class="section-title-line"></div>
+
                                     </div>
                                     <div class="sidebar-social-wrap">
                                         <div class="custom-list">
-                                            <div>
-                                                <a href="{{ route('ekstrakurikuler') }}" class="post-tag">Tampilkan
-                                                    semua</a>
-                                            </div>
+                                            <a href="{{ route('ekstrakurikuler') }}"
+                                                class="{{ Route::currentRouteName() == 'ekstrakurikuler' ? 'aktif' : 'deaktif' }}">Tampilkan
+                                                semua</a>
                                             @foreach ($ekstra as $item)
-                                                <div>
-                                                    <a href="{{ route('ekstrakurikuler.show_index', ['name' => $item->name]) }}"
-                                                        class="post-tag">{{ $item->name }}</a>
-                                                </div>
+                                                @php
+                                                    $isActive = request()->is('ekstrakurikuler/' . $item->name . '*');
+                                                @endphp
+                                                <a href="{{ route('ekstrakurikuler.show_index', ['name' => $item->name]) }}"
+                                                    class="{{ $isActive ? 'aktif' : 'deaktif' }}">{{ $item->name }}</a>
                                             @endforeach
 
                                         </div>

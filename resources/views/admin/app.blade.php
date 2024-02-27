@@ -17,8 +17,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
     @yield('link')
-    <link rel="shortcut icon" type="image/png"
-        href="{{ asset('storage/profile/logo_s.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('storage/profile/logo_s.png') }}" />
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="{{ asset('asset/admin/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.all.min.js"></script>
@@ -30,13 +29,11 @@
 <body>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('storage/profile/logo_s.png') }}"
-            alt="loader" class="lds-ripple img-fluid" />
+        <img src="{{ asset('storage/profile/logo_s.png') }}" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!-- Preloader -->
     <div class="preloader">
-        <img src="{{ asset('storage/profile/logo_s.png') }}"
-            alt="loader" class="lds-ripple img-fluid" />
+        <img src="{{ asset('storage/profile/logo_s.png') }}" alt="loader" class="lds-ripple img-fluid" />
     </div>
     <!-- Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
@@ -47,8 +44,8 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="index-2.html" class="text-nowrap logo-img">
-                        <img src="{{ asset('storage/profile/logo.png') }}"
-                            class="dark-logo" width="180" alt="" />
+                        <img src="{{ asset('storage/profile/logo.png') }}" class="dark-logo" width="180"
+                            alt="" />
                         <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg"
                             class="light-logo" width="180" alt="" />
                     </a>
@@ -79,73 +76,85 @@
                             </a>
                         </li>
 
-
+                        @if (Auth::user()->role == 'Admin')
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow {{ Route::currentRouteNamed('kelas1.index', 'kelas2.index', 'kelas3.index', 'kelas4.index', 'kelas5.index', 'kelas6.index', 'kelas1.edit', 'kelas1.create') ? 'active' : '' }}"
+                                    href="#" aria-expanded="false">
+                                    <span class="d-flex">
+                                        <i class="ti ti-list-details"></i>
+                                    </span>
+                                    <span class="hide-menu">Kelas</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('kelas1.index') }}"
+                                            class="sidebar-link  {{ Route::currentRouteName() == 'kelas1.index' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">MI Kelas 1</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('kelas2.index') }}"
+                                            class="sidebar-link  {{ Route::currentRouteName() == 'kelas2.index' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">MI Kelas 2</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('kelas3.index') }}"
+                                            class="sidebar-link  {{ Route::currentRouteName() == 'kelas3.index' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">MI Kelas 3</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('kelas4.index') }}"
+                                            class="sidebar-link  {{ Route::currentRouteName() == 'kelas4.index' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">MI Kelas 4</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('kelas5.index') }}"
+                                            class="sidebar-link  {{ Route::currentRouteName() == 'kelas5.index' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">MI Kelas 5</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="{{ Route('kelas6.index') }}"
+                                            class="sidebar-link  {{ Route::currentRouteName() == 'kelas6.index' ? 'active' : '' }}">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-circle"></i>
+                                            </div>
+                                            <span class="hide-menu">MI Kelas 6</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
                         <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow {{ Route::currentRouteNamed('kelas1.index', 'kelas2.index', 'kelas3.index', 'kelas4.index', 'kelas5.index', 'kelas6.index', 'kelas1.edit', 'kelas1.create') ? 'active' : '' }}"
-                                href="#" aria-expanded="false">
-                                <span class="d-flex">
-                                    <i class="ti ti-list-details"></i>
+                            <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['teacher.index', 'prestation.create', 'prestation.edit']) ? 'active' : '' }}"
+                                href="{{ Route('teacher.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-file-text"></i>
                                 </span>
                                 <span class="hide-menu">Kelas</span>
                             </a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('kelas1.index') }}"
-                                        class="sidebar-link  {{ Route::currentRouteName() == 'kelas1.index' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">MI Kelas 1</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('kelas2.index') }}"
-                                        class="sidebar-link  {{ Route::currentRouteName() == 'kelas2.index' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">MI Kelas 2</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('kelas3.index') }}"
-                                        class="sidebar-link  {{ Route::currentRouteName() == 'kelas3.index' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">MI Kelas 3</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('kelas4.index') }}"
-                                        class="sidebar-link  {{ Route::currentRouteName() == 'kelas4.index' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">MI Kelas 4</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('kelas5.index') }}"
-                                        class="sidebar-link  {{ Route::currentRouteName() == 'kelas5.index' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">MI Kelas 5</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="{{ Route('kelas6.index') }}"
-                                        class="sidebar-link  {{ Route::currentRouteName() == 'kelas6.index' ? 'active' : '' }}">
-                                        <div class="round-16 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-circle"></i>
-                                        </div>
-                                        <span class="hide-menu">MI Kelas 6</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
+                        @endif
+                      
+                        
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['prestation.index', 'prestation.create', 'prestation.edit']) ? 'active' : '' }}"
                                 href="{{ Route('prestation.index') }}" aria-expanded="false">
@@ -232,14 +241,23 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link {{ Route::currentRouteName() == 'pengguna.index' ? 'active' : '' }}"
+                                    href="{{ Route('pengguna.index') }}" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-user"></i>
+                                    </span>
+                                    <span class="hide-menu">Pengguna</span>
+                                </a>
+                            </li>
                         @endif
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Route::currentRouteName() == 'pengguna.index' ? 'active' : '' }}"
-                                href="{{ Route('pengguna.index') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ Route::currentRouteName() == 'admin.change' ? 'active' : '' }}"
+                                href="{{ Route('admin.change') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-settings"></i>
                                 </span>
-                                <span class="hide-menu">Pengguna</span>
+                                <span class="hide-menu">Ganti Password</span>
                             </a>
                         </li>
 

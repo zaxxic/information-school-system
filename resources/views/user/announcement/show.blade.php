@@ -119,7 +119,7 @@
                                         <div class="  mb-2" style="width: 100%; height: 400px;">
                                             <video controls style="width: 100%; height: 400px; object-fit: contain;"
                                                 id="photo">
-                                                <source src="{{ asset('storage/kelas1/' . ($item->video ?? '')) }}"
+                                                <source src="{{ asset('storage/announcement/' . ($item->video ?? '')) }}"
                                                     type="video/mp4">
 
                                                 Maaf, browser Anda tidak mendukung pemutaran video.
