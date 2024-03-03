@@ -44,7 +44,7 @@ class Class1Controller extends Controller
 
     public function teacher(Request $request)
     {
-        $userRoles = Auth::user()->roles;
+        $userRoles = Auth::user()->role;
 
         $clasQuery = ClassArticle::where('class_category_id', $userRoles);
 
@@ -66,7 +66,7 @@ class Class1Controller extends Controller
         }
 
         $classes = $clasQuery->orderBy('created_at')->paginate(12);
-        return view('admin.kelas.index', compact('classes'));
+        return view('admin.kelas.kelas', compact('classes'));
     }
 
 
@@ -320,6 +320,7 @@ class Class1Controller extends Controller
         $ClassArticle->paragraf2 = $request->input('paragraf2');
         $ClassArticle->paragraf3 = $request->input('paragraf3');
         $ClassArticle->foto = $randomName2;
+        $ClassArticle->status = 1;
         $ClassArticle->user_id = $userId;
         $ClassArticle->video = $randomNameVideo;
         $ClassArticle->more = $paragraf;
@@ -347,6 +348,11 @@ class Class1Controller extends Controller
         } else {
             return "kok";
         }
+    }
+
+    public function create_class_teacher()
+    {
+        return view('admin.kelas.createGuru');
     }
 
     public function store_teacher(Request $request)
@@ -433,7 +439,7 @@ class Class1Controller extends Controller
             }
         }
         $ClassArticle = new ClassArticle();
-        $userRoles = Auth::user()->roles;
+        $userRoles = Auth::user()->role;
         $userId = Auth::id();
 
         $ClassArticle->title = $request->input('title');
@@ -452,6 +458,8 @@ class Class1Controller extends Controller
         return redirect()->route('teacher.index')->with('success', 'Berita berhasil ditambahkan!');
     }
 
+
+
     /**
      * Display the specified resource.
      */
@@ -468,6 +476,14 @@ class Class1Controller extends Controller
         $data = $class->more;
 
         return view('admin.kelas.edit-kelas', compact('class', 'data'));
+    }
+
+    public function edit_teacher(string $id)
+    {
+        $class = ClassArticle::findOrFail($id);
+        $data = $class->more;
+
+        return view('admin.kelas.editGuru', compact('class', 'data'));
     }
 
     /**
@@ -560,7 +576,7 @@ class Class1Controller extends Controller
                 $photo2 = $request->file('photo2');
                 $randomName2 = uniqid() . '.' . $photo2->getClientOriginalExtension();
                 $photo2->storeAs('public/kelas1', $randomName2);
-                $classArticle->photo2 = $randomName2;
+                $classArticle->foto = $randomName2;
             }
 
             if ($request->hasFile('video')) {
@@ -589,6 +605,108 @@ class Class1Controller extends Controller
             } else {
                 return "kok";
             }
+        }
+
+        return redirect()->back()
+            ->withErrors('Anda tidak memiliki akses untuk edit data ini')
+            ->with('error', 'Gagal edit data ini.');
+    }
+    public function update_teacher(Request $request, $id)
+    {
+        $classArticle = ClassArticle::findOrFail($id);
+
+        $userId = (int) Auth::id();
+        $classUserId = (int) $classArticle->user_id;
+
+        if ($classUserId === $userId || Auth::user()->role === 'Admin') {
+            try {
+                $validator = $request->validate([
+                    'title' => 'required|string|unique:class_articles,title,' . $id,
+                    'photo' => 'image|mimes:jpeg,png,jpg|max:2048',
+                    'photo2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'paragraf1' => 'required|string',
+                    'paragraf2' => 'required|string',
+                    'paragraf3' => 'string|required ',
+                    'repeater-group.*.area' => 'string|nullable',
+                    'video' => 'file|mimes:mp4,avi,wmv,mov|max:35000',
+                ], [
+                    'title.required' => 'Kolom Judul harus diisi',
+                    'title.string' => 'Kolom Judul harus berupa teks',
+                    'title.unique' => 'Judul sudah digunakan.',
+                    'photo.image' => 'Setiap file foto harus berupa gambar',
+                    'photo.mimes' => 'Format setiap file foto harus jpeg, png, atau jpg',
+                    'photo.max' => 'Ukuran setiap file foto maksimal 2048 KB',
+                    'photo2.image' => 'File foto2 harus berupa gambar',
+                    'photo2.mimes' => 'Format setiap file foto harus jpeg, png, atau jpg',
+                    'photo2.max' => 'Ukuran setiap file foto maksimal 2048 KB',
+                    'paragraf1.required' => 'Kolom Paragraf 1 harus diisi',
+                    'paragraf1.string' => 'Kolom Paragraf 1 harus berupa teks',
+                    'paragraf2.required' => 'Kolom Paragraf 2 harus diisi',
+                    'paragraf2.string' => 'Kolom Paragraf 2 harus berupa teks',
+                    'paragraf3.string' => 'Kolom Paragraf 3 harus berupa teks',
+                    'paragraf3.required' => 'Kolom Paragraf 3 harus di isi',
+                    'repeater-group.*.area.string' => 'Setiap Paragraf Bebas harus berupa teks',
+                    'video.file' => 'File video harus diisi',
+                    'video.mimes' => 'Format file video harus mp4, avi, wmv, atau mov',
+                    'video.max' => 'Ukuran file video maksimal 20480 KB',
+                ]);
+            } catch (ValidationException $e) {
+                $validator = $e->validator;
+
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validator)
+                    ->with('error', 'There are validation errors. Please check the form.');
+            }
+
+
+            $paragraf = [];
+
+            $repeaterArea = $request->input('repeater-group') ?? [];
+
+
+            foreach ($repeaterArea as $data) {
+                if ($data && array_key_exists('area', $data)) {
+                    $area = $data['area'];
+                    $paragraf[] = [
+                        $area,
+                    ];
+                }
+            }
+            $userRoles = Auth::user()->role;
+
+            $classArticle->title = $request->input('title');
+            $classArticle->class_category_id = $userRoles;
+            $classArticle->slug = Str::slug($request->input('title'));
+            $classArticle->paragraf1 = $request->input('paragraf1');
+            $classArticle->paragraf2 = $request->input('paragraf2');
+            $classArticle->paragraf3 = $request->input('paragraf3');
+            $classArticle->more = $paragraf;
+
+            if ($request->hasFile('photo')) {
+                $photo = $request->file('photo');
+                $randomName = uniqid() . '.' . $photo->getClientOriginalExtension();
+                $photo->storeAs('public/kelas1', $randomName);
+                $classArticle->photo = $randomName;
+            }
+
+            if ($request->hasFile('photo2')) {
+                $photo2 = $request->file('photo2');
+                $randomName2 = uniqid() . '.' . $photo2->getClientOriginalExtension();
+                $photo2->storeAs('public/kelas1', $randomName2);
+                $classArticle->foto = $randomName2;
+            }
+
+            if ($request->hasFile('video')) {
+                $video = $request->file('video');
+                $randomVideoName = uniqid() . '.' . $video->getClientOriginalExtension();
+                $video->storeAs('public/kelas1', $randomVideoName);
+                $classArticle->video = $randomVideoName;
+            }
+
+            $classArticle->save();
+
+            return redirect()->route('teacher.index')->with('success', 'Berita berhasil ditambahkan!');
         }
 
         return redirect()->back()

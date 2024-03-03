@@ -41,9 +41,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 //prefix kelas
+Route::get('/kelas', [ClassUserController::class, 'class'])->name('class');
+
 Route::prefix('kelas')->group(function () {
-    Route::get('/1', [ClassUserController::class, 'class1'])->name('class1');
     Route::get('/2', [ClassUserController::class, 'class2'])->name('class2');
+    Route::get('/1', [ClassUserController::class, 'class1'])->name('class1');
     Route::get('/3', [ClassUserController::class, 'class3'])->name('class3');
     Route::get('/4', [ClassUserController::class, 'class4'])->name('class4');
     Route::get('/5', [ClassUserController::class, 'class5'])->name('class5');
@@ -73,8 +75,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     // Route::resource('kelas1', Class1Controller::class);
     Route::get('/guru', [Class1Controller::class, 'teacher'])->name('teacher.index');
-    Route::get('/guru/kelas', [Class1Controller::class, 'create_class'])->name('kelas.create');
+    Route::get('/guru/kelas', [Class1Controller::class, 'create_class_teacher'])->name('kelas.create');
     Route::post('/guru/store', [Class1Controller::class, 'store_teacher'])->name('kelas.store');
+    Route::get('/guru/edit/{id}', [Class1Controller::class, 'edit_teacher'])->name('kelas.edit');
+    Route::put('/kelas/guru/{id}', [Class1Controller::class, 'update_teacher'])->name('kelas.update ');
     
     Route::get('/kelas1', [Class1Controller::class, 'index1'])->name('kelas1.index');
     Route::get('/kelas2', [Class1Controller::class, 'index2'])->name('kelas2.index');

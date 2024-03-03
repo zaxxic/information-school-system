@@ -139,7 +139,14 @@ class EkstraController extends Controller
 
     public function index(Request $request)
     {
-        $ekstra = EkstraArticle::query();
+        $userRole = Auth::user()->role;
+        $userId = auth()->id();
+
+        if ($userRole == 'Admin') {
+            $ekstra = EkstraArticle::query();
+        } else {
+            $ekstra = EkstraArticle::where('user_id', $userId);
+        }
 
         if ($request->has('ekstra')) {
             $ekstraId = $request->ekstra;
@@ -164,6 +171,8 @@ class EkstraController extends Controller
                 }
             }
         }
+
+        $ekstra->orderBy('status')->orderBy('created_at', 'desc');
 
         $ekstra = $ekstra->paginate(12);
 
@@ -267,6 +276,10 @@ class EkstraController extends Controller
         $userId = Auth::id();
 
         $ekstra = new EkstraArticle();
+        $userRole = Auth::user()->role;
+        if ($userRole == 'Admin') {
+            $ekstra->status = '1';
+        }
         $ekstra->title = $request->input('title');
         $ekstra->slug = Str::slug($request->input('title'));
         $ekstra->paragraf1 = $request->input('paragraf1');

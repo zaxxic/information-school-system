@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+
 class AnnouncementController extends Controller
 {
     /**
@@ -18,7 +19,15 @@ class AnnouncementController extends Controller
      */
     public function index(Request $request)
     {
-        $announcement = Announcement::where('jenis', 'pengumuman');
+
+        $userRole = Auth::user()->role;
+        $userId = auth()->id();
+
+        if ($userRole == 'Admin') {
+            $announcement = Announcement::where('jenis', 'pengumuman');
+        } else {
+            $announcement = Announcement::where('jenis', 'pengumuman')->where('user_id', $userId);
+        }
 
         if ($request->has('filter')) {
             $dates = explode(' - ', $request->filter);
@@ -39,6 +48,7 @@ class AnnouncementController extends Controller
 
 
 
+        $announcement->orderBy('status')->orderBy('created_at', 'desc');
 
         $announcement = $announcement->paginate(12);
 
@@ -88,7 +98,7 @@ class AnnouncementController extends Controller
                 'paragraf2' => 'required|string',
                 'paragraf3' => 'string|required ',
                 'repeater-group.*.area' => 'string|nullable',
-                'video' => 'file|mimes:mp4,avi,wmv,mov|max:35000',
+                'video' => 'file|mimes:mp4,avi,wmv,mov|max:3500',
             ], [
                 'title.required' => 'Kolom Judul harus diisi',
                 'title.string' => 'Kolom Judul harus berupa teks',
@@ -163,8 +173,11 @@ class AnnouncementController extends Controller
         // $user = Auth::user();
 
         $userId = Auth::id();
-
+        $userRole = Auth::user()->role;
         $announcement = new Announcement();
+        if ($userRole == 'Admin') {
+            $announcement->status = '1';
+        }
         $announcement->title = $request->input('title');
         $announcement->slug = Str::slug($request->input('title'));
         $announcement->paragraf1 = $request->input('paragraf1');

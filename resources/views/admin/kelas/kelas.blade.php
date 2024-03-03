@@ -10,7 +10,7 @@
                     Berita kelas 1
                 </div>
                 <div id="buatTim" class="d-flex align-items-end">
-                    <a class="btn btn-primary" href="{{ Route('kelas1.create') }}">Buat Berita</a>
+                    <a class="btn btn-primary" href="{{ Route('kelas.create') }}">Buat Berita</a>
                 </div>
             </div>
             <div class="d-flex justify-content-between mb-4 gap-2">
@@ -20,6 +20,7 @@
                         <input id="dateRangePicker" type="text" class="form-control chat-search-input"
                             aria-describedby="basic-addon-search31" name="filter" value="">
                         <input type="hidden" name="title" value="{{ request('title') }}">
+
                     </form>
                 </div>
 
@@ -82,7 +83,7 @@
                                             stroke-linejoin="round" stroke-width="2"
                                             d="M4 7h16m-10 4v6m4-6v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" />
                                     </svg> </a>
-                                <a href="{{ route('kelas1.edit', ['id' => $item->id]) }}" data-title="{{ $item->title }}"
+                                <a href="{{ route('kelas.edit', ['id' => $item->id]) }}" data-title="{{ $item->title }}"
                                     class="btn btn-warning col-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                                         viewBox="0 0 20 24">

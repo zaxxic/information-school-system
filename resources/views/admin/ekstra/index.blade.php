@@ -68,7 +68,7 @@
                                     <label class="text-success ms-1"> Aktif</label>
                                 @endif
                             </div>
-                            <dfn>{{ $item->user->name }} Sebagai {{ $item->user->role }}</dfn>
+                            <dfn>{{ $item->user->name }} Sebagai guru kelas {{ $item->user->role }}</dfn>
                             <p>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}</p>
                             <p class="card-text mt-1">
                                 Jenis ekstra : {{ $item->name_ekstra->name }}

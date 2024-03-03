@@ -103,7 +103,8 @@
                             <div class="sidebar-wrap">
 
 
-                                @include('user.class.recent') <div class="sidebar-widget sidebar-widget-two">
+                                @include('user.class.recent')
+                                <div class="sidebar-widget sidebar-widget-two">
                                     <div class="widget-title mb-25">
                                         <h2 class="title">Subscribe & Followers</h2>
                                         <div class="section-title-line"></div>
@@ -122,6 +123,7 @@
 
 
                             </div>
+
                         </div>
                     </div>
                 </div>

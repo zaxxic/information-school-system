@@ -1,4 +1,35 @@
 <div class="sidebar-widget sidebar-widget-two">
+    <div class="widget-title mb-25">
+        <h2 class="title">Pililh jenis ekstra</h2>
+        <div class="section-title-line"></div>
+
+    </div>
+    <div class="sidebar-social-wrap">
+        <div class="custom-list">
+            <a href="{{ route('ekstrakurikuler') }}"
+                class="{{ Route::currentRouteName() == 'kelas' ? 'aktif' : 'deaktif' }}">Tampilkan
+                semua</a>
+
+            <a href="{{ route('class1') }}" class="{{ request()->routeIs('class1') ? 'aktif' : 'deaktif' }}">Mi kelas
+                1</a>
+            <a href="{{ route('class2') }}" class="{{ request()->routeIs('class2') ? 'aktif' : 'deaktif' }}">Mi kelas
+                2</a>
+            <a href="{{ route('class3') }}" class="{{ request()->routeIs('class3') ? 'aktif' : 'deaktif' }}">Mi kelas
+                3</a>
+            <a href="{{ route('class4') }}" class="{{ request()->routeIs('class4') ? 'aktif' : 'deaktif' }}">Mi kelas
+                4</a>
+            <a href="{{ route('class5') }}" class="{{ request()->routeIs('class5') ? 'aktif' : 'deaktif' }}">Mi kelas
+                5</a>
+            <a href="{{ route('class6') }}" class="{{ request()->routeIs('class6') ? 'aktif' : 'deaktif' }}">Mi kelas
+                6</a>
+
+
+
+        </div>
+
+    </div>
+</div>
+<div class="sidebar-widget sidebar-widget-two">
     {{-- @dd($recent) --}}
 
     <div class="widget-title mb-30">

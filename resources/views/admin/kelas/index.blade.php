@@ -7,7 +7,7 @@
         <div class="row">
             <div class="d-flex justify-content-between">
                 <div class="card-header fs-4">
-                    Berita kelas 1
+                    Berita kelas {{ Auth::user()->role }}
                 </div>
                 <div id="buatTim" class="d-flex align-items-end">
                     <a class="btn btn-primary" href="{{ Route('kelas1.create') }}">Buat Berita</a>
@@ -52,7 +52,7 @@
                                     <label class="text-success ms-1"> Aktif</label>
                                 @endif
                             </div>
-                            <dfn>{{ $item->user->name }} Sebagai {{ $item->user->role }}</dfn>
+                            <dfn>{{ $item->user->name }} Sebagai guru kelas {{ $item->user->role }}</dfn>
                             <p>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}</p>
                             <p class="card-text">
 

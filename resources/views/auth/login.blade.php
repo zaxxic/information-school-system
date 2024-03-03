@@ -38,15 +38,8 @@
             <div class="position-relative z-index-5">
                 <div class="row">
                     <div class="col-xl-7 col-xxl-8">
-                        <a href="index-2.html" class="text-nowrap logo-img d-block px-4 py-9 w-100">
-                            <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg"
-                                width="180" alt="" />
-                        </a>
-                        <div class="d-none d-xl-flex align-items-center justify-content-center"
-                            style="height: calc(100vh - 80px)">
-                            <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/backgrounds/login-security.svg"
-                                alt="" class="img-fluid" width="500" />
-                        </div>
+                        <img src="{{ asset('storage/profile/gambar1.jpg') }}" alt="" class=""
+                            width="800" />
                     </div>
                     <div class="col-xl-5 col-xxl-4">
                         <div
@@ -92,17 +85,18 @@
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="form-check">
-                                            <input class="form-check-input primary" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
+                                            <input class="form-check-input primary" type="checkbox" name="remember"
+                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                             <label class="form-check-label text-dark" for="flexCheckChecked">
                                                 Ingat akun
                                             </label>
                                         </div>
-                                        <a class="text-primary fw-medium"
-                                            href="{{Route('reset')}}">Lupa password ?</a>
+                                        <a class="text-primary fw-medium" href="{{ Route('reset') }}">Lupa password
+                                            ?</a>
                                     </div>
-                                    <button class="btn btn-primary w-100 py-8 mb-4 rounded-2" type="submit">Masuk</button>
+                                    <button class="btn btn-primary w-100 py-8 mb-4 rounded-2"
+                                        type="submit">Masuk</button>
                                 </form>
                             </div>
                         </div>

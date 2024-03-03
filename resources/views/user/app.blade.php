@@ -116,31 +116,10 @@
 
                                                 </ul>
                                             </li>
+                                        
                                             <li
-                                                class="{{ Route::currentRouteNamed('class1', 'class2', 'class3', 'class4', 'class5', 'class6', 'class.show') ? 'active' : '' }} menu-item-has-children">
-
-                                                <a href="#">Kelas</a>
-                                                <ul class="sub-menu">
-
-                                                    <li class="{{ Request::is('kelas/1*') ? 'active' : '' }}">
-                                                        <a href="{{ Route('class1') }}">MI kelas 1</a>
-                                                    </li>
-                                                    <li class="{{ Request::is('kelas/2*') ? 'active' : '' }}">
-                                                        <a href="{{ Route('class2') }}">MI kelas 2</a>
-                                                    </li>
-                                                    <li class="{{ Request::is('kelas/3*') ? 'active' : '' }}">
-                                                        <a href="{{ Route('class3') }}">MI kelas 3</a>
-                                                    </li>
-                                                    <li class="{{ Request::is('kelas/4*') ? 'active' : '' }}">
-                                                        <a href="{{ Route('class4') }}">MI kelas 4</a>
-                                                    </li>
-                                                    <li class="{{ Request::is('kelas/5*') ? 'active' : '' }}">
-                                                        <a href="{{ Route('class5') }}">MI kelas 5</a>
-                                                    </li>
-                                                    <li class="{{ Request::is('kelas/6*') ? 'active' : '' }}">
-                                                        <a href="{{ Route('class6') }}">MI kelas 6</a>
-                                                    </li>
-                                                </ul>
+                                                class="{{ Route::currentRouteNamed('class', 'class.show','class1','class2','class3','class4','class5','class6') ? 'active' : '' }}">
+                                                <a href="{{ route('ekstrakurikuler') }}">Kelas</a>
                                             </li>
 
                                             <li

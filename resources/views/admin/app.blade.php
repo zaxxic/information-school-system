@@ -143,18 +143,18 @@
                                 </ul>
                             </li>
                         @else
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['teacher.index', 'prestation.create', 'prestation.edit']) ? 'active' : '' }}"
-                                href="{{ Route('teacher.index') }}" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-file-text"></i>
-                                </span>
-                                <span class="hide-menu">Kelas</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['teacher.index', 'kelas.create', 'kelas.edit']) ? 'active' : '' }}"
+                                    href="{{ Route('teacher.index') }}" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-list-details"></i>
+                                    </span>
+                                    <span class="hide-menu">Kelas</span>
+                                </a>
+                            </li>
                         @endif
-                      
-                        
+
+
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ in_array(Route::currentRouteName(), ['prestation.index', 'prestation.create', 'prestation.edit']) ? 'active' : '' }}"
                                 href="{{ Route('prestation.index') }}" aria-expanded="false">

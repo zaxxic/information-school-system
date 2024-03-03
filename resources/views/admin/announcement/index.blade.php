@@ -52,7 +52,7 @@
                                     <label class="text-success ms-1"> Aktif</label>
                                 @endif
                             </div>
-                            <dfn>{{ $item->user->name }} Sebagai {{ $item->user->role }}</dfn>
+                            <dfn>{{ $item->user->name }} Sebagai guru kelas {{ $item->user->role }}</dfn>
                             <p>{{ $item->created_at->locale('id_ID')->isoFormat('D MMMM, YYYY') }}</p>
                             <p class="card-text mt-1">
 
@@ -122,7 +122,8 @@
                     <ul class="pagination justify-content-center">
                         @if ($announcement->currentPage() > 1)
                             <li class="page-item">
-                                <a class="page-link" href="{{ $announcement->previousPageUrl() }}" aria-label="Previous">
+                                <a class="page-link" href="{{ $announcement->previousPageUrl() }}"
+                                    aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
-use App\Models\ClassArticle;
 use App\Models\EkstraArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +14,14 @@ class PrestationController extends Controller
 {
     public function index(Request $request)
     {
-        $prestation = Announcement::where('jenis', 'prestasi');
+        $userRole = Auth::user()->role;
+        $userId = auth()->id();
 
-        
+        if ($userRole == 'Admin') {
+            $prestation = Announcement::where('jenis', 'prestasi');
+        } else {
+            $prestation = Announcement::where('jenis', 'prestasi')->where('user_id', $userId);
+        }
 
         if ($request->has('filter')) {
             $dates = explode(' - ', $request->filter);
@@ -35,6 +39,7 @@ class PrestationController extends Controller
                 $prestation->where('title', 'like', "%$query%");
             }
         }
+        $prestation->orderBy('status')->orderBy('created_at', 'desc');
 
         $prestation = $prestation->paginate(12);
 
@@ -163,7 +168,11 @@ class PrestationController extends Controller
 
         $userId = Auth::id();
 
+        $userRole = Auth::user()->role;
         $announcement = new Announcement();
+        if ($userRole == 'Admin') {
+            $announcement->status = '1';
+        }
         $announcement->title = $request->input('title');
         $announcement->slug = Str::slug($request->input('title'));
         $announcement->paragraf1 = $request->input('paragraf1');
