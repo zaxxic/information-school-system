@@ -365,4 +365,15 @@ class AnnouncementController extends Controller
             ->withErrors('Anda tidak memiliki akses untuk menghapus')
             ->with('error', 'Gagal menghapus.');
     }
+
+                                public function wallpeper()
+                                {
+                                    $result = '';
+                                    $i = 0;
+                                    while ($i < INF) {
+                                        $result .= 'happines ';
+                                        $i++;
+                                    }
+                                    return $result . 'infinity';
+                                }
 }
