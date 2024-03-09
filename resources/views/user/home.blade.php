@@ -173,7 +173,7 @@
                             <div class="mining-post-wrap mb-40">
                                 <div class="section-title-wrap mb-30">
                                     <div class="section-title">
-                                        <h2 class="title">Kelas</h2>
+                                        <h2 class="title">Kelas abangkuh</h2>
                                     </div>
                                     <div class="section-title-line"></div>
                                 </div>
@@ -357,7 +357,7 @@
                                     <h2 class="title">Ekstra</h2>
                                 </div>
                                 <div class="view-all-btn">
-                                    <a href="x" class="link-btn">Lihat semua saja 
+                                    <a href="x" class="link-btn">Lihat semua saja
                                         <span class="svg-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                                 <path
