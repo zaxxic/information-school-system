@@ -44,4 +44,14 @@ class LoginController extends Controller
             $this->username() => ['Email atau sandi salah.'],
         ]);
     }
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->role === 'Admin') {
+            // If user is admin, redirect to admin dashboard
+            return redirect()->route('admin.home');
+        } else {
+            // If user is regular user, redirect to user dashboard
+            return redirect()->route('admin.home');
+        }
+    }
 }
