@@ -89,6 +89,16 @@
     --youtube: #c4302b;
     --skype: #00aff0;
 }
+/* Gaya CSS untuk memastikan logo berada di tengah */
+.menu-area .logo {
+    text-align: center; /* Untuk memastikan logo berada di tengah horizontal */
+}
+
+@media (max-width: 991px) {
+    .menu-area .logo {
+        margin-bottom: 20px; /* Menambahkan margin bawah agar logo tidak terlalu dekat dengan menu saat tampilan mobile */
+    }
+}
 body {
     font-family: var(--tg-body-font-family);
     font-weight: var(--tg-body-font-weight);

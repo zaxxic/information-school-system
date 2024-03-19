@@ -31,8 +31,8 @@
     <div id="preloader">
         <div class="loader-inner">
             <div id="loader">
-                <h2 id="bg-loader">Mi-Alziz<span>.</span></h2>
-                <h2 id="fg-loader">Mi-Alziz<span>.</span></h2>
+                <h2 id="bg-loader">Al-aziz<span></span></h2>
+                <h2 id="fg-loader">Al-aziz<span></span></h2>
             </div>
         </div>
     </div>
@@ -87,8 +87,8 @@
                         <div class="menu-wrap">
                             <div class="row align-items-center">
                                 <div class="col-lg-7 col-md-4">
-                                    <div class="logo d-none">
-                                        <a href="index.html"><img src="assets/img/logo/w_logo.png" alt=""></a>
+                                    <div class="logo d-none justify-content-center">
+                                        <a href="index.html"><img src="{{ asset('storage/profile/mi.png') }}" alt=""></a>
                                     </div>
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">

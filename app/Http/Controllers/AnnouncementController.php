@@ -66,7 +66,7 @@ class AnnouncementController extends Controller
             ->concat($data_from_table2)
             ->concat($prestation)
             ->concat($announcement);
-        $recents = $all_data->shuffle()->take(4);
+        $recents = $all_data->take(4);
         $announcement = Announcement::where('jenis', 'pengumuman')
             ->where('status', 1)
             ->paginate(10);
@@ -183,8 +183,8 @@ class AnnouncementController extends Controller
         $announcement->paragraf1 = $request->input('paragraf1');
         $announcement->paragraf2 = $request->input('paragraf2');
         $announcement->paragraf3 = $request->input('paragraf3');
-        $announcement->foto = $randomName2;
         $announcement->photo = $randomName1;
+        $announcement->foto = $randomName2;
         $announcement->jenis = 'pengumuman';
         $announcement->user_id = $userId;
         $announcement->video = $randomNameVideo;
@@ -206,11 +206,19 @@ class AnnouncementController extends Controller
     {
         $item = Announcement::where('slug', $slug)->firstOrFail();
         $moreParagraf = $item->more;
-        // $recent = Announcement::orderBy('id', 'desc')
-        //     ->take(4)
-        //     ->get();
+        $data_from_table1 = ClassArticle::where('status', '1')->take(2)->get();
+        $data_from_table2 = EkstraArticle::where('status', '1')->take(2)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->take(2)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->take(2)->get();
 
-        return   view('user.announcement.show', compact('item', 'moreParagraf'));
+        $all_data = $data_from_table1
+            ->concat($data_from_table2)
+            ->concat($prestation)
+            ->concat($announcement);
+
+        $recents = collect([$data_from_table1])->flatten()->concat($all_data->except($data_from_table1->keys()->all())->take(3));
+
+        return   view('user.announcement.show', compact('item', 'moreParagraf', 'recents'));
     }
 
 
@@ -365,15 +373,4 @@ class AnnouncementController extends Controller
             ->withErrors('Anda tidak memiliki akses untuk menghapus')
             ->with('error', 'Gagal menghapus.');
     }
-
-                                public function wallpeper()
-                                {
-                                    $result = '';
-                                    $i = 0;
-                                    while ($i < INF) {
-                                        $result .= 'happines ';
-                                        $i++;
-                                    }
-                                    return $result . 'infinity';
-                                }
 }

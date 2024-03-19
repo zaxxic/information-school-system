@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <form class="mt-4" action="{{ Route('kelas1.store') }}" enctype="multipart/form-data" method="POST">
+    <form class="mt-4" action="{{ Route('kelas1.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="modal-body">
                 <p>

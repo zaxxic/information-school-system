@@ -17,13 +17,14 @@
                         <div class="col-lg-4">
                             <div class="banner-post-four">
                                 <div class="banner-post-thumb-four">
-                                    <a href="blog-details.html"><img src="{{ asset('storage/announcement/' . $item->photo) }}"
-                                            alt=""></a>
+                                    <a href="{{ route('announcement.show', ['slug' => $item->slug]) }}"><img
+                                            src="{{ asset('storage/announcement/' . $item->photo) }}" alt=""></a>
                                 </div>
                                 <div class="banner-post-content-four">
-                                    <a href="blog.html" class="post-tag">Pengumuman</a>
+                                    <a href="{{ Route('announcement') }}" class="post-tag">Pengumuman</a>
                                     <h2 class="post-title bold-underline"><a
-                                            href="blog-details.html">{{ $item->title }}</a></h2>
+                                            href="{{ route('announcement.show', ['slug' => $item->slug]) }}">{{ $item->title }}</a>
+                                    </h2>
                                     <div class="blog-post-meta white-blog-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-user"></i>by {{ $item->user->role }}</li>
@@ -68,7 +69,7 @@
                                     <h2 class="title">Prestasi</h2>
                                 </div>
                                 <div class="view-all-btn">
-                                    <a href="{{Route('prestation')}}" class="link-btn">Lihat Semua
+                                    <a href="{{ Route('prestation') }}" class="link-btn">Lihat Semua
                                         <span class="svg-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                                 <path
@@ -173,7 +174,9 @@
                             <div class="mining-post-wrap mb-40">
                                 <div class="section-title-wrap mb-30">
                                     <div class="section-title">
-                                        <h2 class="title">Kelas abangkuh</h2>
+                                        <h2 class="title">Kelas abangkuh
+
+                                        </h2>
                                     </div>
                                     <div class="section-title-line"></div>
                                 </div>
