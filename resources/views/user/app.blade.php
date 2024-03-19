@@ -119,7 +119,7 @@
                                         
                                             <li
                                                 class="{{ Route::currentRouteNamed('class', 'class.show','class1','class2','class3','class4','class5','class6') ? 'active' : '' }}">
-                                                <a href="{{ route('ekstrakurikuler') }}">Kelas</a>
+                                                <a href="{{ route('kelas') }}">Kelas</a>
                                             </li>
 
                                             <li

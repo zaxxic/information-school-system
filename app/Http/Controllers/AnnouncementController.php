@@ -57,16 +57,14 @@ class AnnouncementController extends Controller
 
     public function index_announcement()
     {
-        $data_from_table1 = ClassArticle::where('status', '1')->take(2)->get();
-        $data_from_table2 = EkstraArticle::where('status', '1')->take(2)->get();
-        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->take(2)->get();
-        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->take(2)->get();
+        // dd('trtr');
+        $data_from_table2 = EkstraArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
 
-        $all_data = $data_from_table1
-            ->concat($data_from_table2)
+        $recents = $data_from_table2
             ->concat($prestation)
             ->concat($announcement);
-        $recents = $all_data->take(4);
         $announcement = Announcement::where('jenis', 'pengumuman')
             ->where('status', 1)
             ->paginate(10);

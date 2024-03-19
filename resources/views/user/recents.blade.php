@@ -10,7 +10,7 @@
             @if ($key == 0)
                 <div class="hot-post-item">
                     <div class="hot-post-thumb">
-                        <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}"><img src="{{ asset('storage/kelas1/' . $item->photo) }}" alt=""></a>
+                        <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}"><img src="{{ asset('storage/ekstra/' . $item->photo) }}" alt=""></a>
                     </div>
                     <div class="hot-post-content">
                         <h4 class="">

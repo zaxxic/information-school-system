@@ -41,7 +41,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 //prefix kelas
-Route::get('/kelas', [ClassUserController::class, 'class'])->name('class');
+Route::get('/kelas', [ClassUserController::class, 'class'])->name('kelas');
 
 Route::prefix('kelas')->group(function () {
     Route::get('/2', [ClassUserController::class, 'class2'])->name('class2');
