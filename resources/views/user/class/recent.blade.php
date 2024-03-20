@@ -1,12 +1,12 @@
 <div class="sidebar-widget sidebar-widget-two">
     <div class="widget-title mb-25">
-        <h2 class="title">Pililh jenis ekstra</h2>
+        <h2 class="title">Pililh Kelas</h2>
         <div class="section-title-line"></div>
 
     </div>
     <div class="sidebar-social-wrap">
         <div class="custom-list">
-            <a href="{{ route('ekstrakurikuler') }}"
+            <a href="{{ route('kelas') }}"
                 class="{{ Route::currentRouteName() == 'kelas' ? 'aktif' : 'deaktif' }}">Tampilkan
                 semua</a>
 

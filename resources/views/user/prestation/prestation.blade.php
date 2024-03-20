@@ -10,7 +10,7 @@
                         <div class="breadcrumb-content">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active">Pengumuman
+                                    <li class="breadcrumb-item active">Prestasi
                                     </li>
                                 </ol>
                             </nav>

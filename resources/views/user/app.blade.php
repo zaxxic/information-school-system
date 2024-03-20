@@ -88,7 +88,8 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-7 col-md-4">
                                     <div class="logo d-none justify-content-center">
-                                        <a href="index.html"><img src="{{ asset('storage/profile/mi.png') }}" alt=""></a>
+                                        <a href="index.html"><img src="{{ asset('storage/profile/mi.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">
@@ -116,18 +117,18 @@
 
                                                 </ul>
                                             </li>
-                                        
+
                                             <li
-                                                class="{{ Route::currentRouteNamed('class', 'class.show','class1','class2','class3','class4','class5','class6') ? 'active' : '' }}">
+                                                class="{{ Route::currentRouteNamed('class','kelas', 'class.show', 'class1', 'class2', 'class3', 'class4', 'class5', 'class6') ? 'active' : '' }}">
                                                 <a href="{{ route('kelas') }}">Kelas</a>
                                             </li>
 
                                             <li
-                                                class="{{ Route::currentRouteName() == 'prestation' ? 'active' : '' }}">
+                                                class="{{ Route::currentRouteNamed('prestation', 'prestation.show') ? 'active' : '' }}">
                                                 <a href="{{ route('prestation') }}">Prestasi</a>
                                             </li>
                                             <li
-                                                class="{{ Route::currentRouteNamed('ekstrakurikuler', 'ekstra.show', 'ekstrakurikuler.show_index','ekstra.shows') ? 'active' : '' }}">
+                                                class="{{ Route::currentRouteNamed('ekstrakurikuler', 'ekstra.show', 'ekstrakurikuler.show_index', 'ekstra.shows') ? 'active' : '' }}">
                                                 <a href="{{ route('ekstrakurikuler') }}">Ekstrakurikuler</a>
                                             </li>
                                             <li

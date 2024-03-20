@@ -10,14 +10,14 @@
             @if ($key == 0)
                 <div class="hot-post-item">
                     <div class="hot-post-thumb">
-                        <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}"><img src="{{ asset('storage/ekstra/' . $item->photo) }}" alt=""></a>
+                        <a href="{{ route('prestation.show', ['slug' => $item->slug]) }}"><img
+                                src="{{ asset('storage/announcement/' . $item->photo) }}" alt=""></a>
                     </div>
                     <div class="hot-post-content">
                         <h4 class="">
-                            <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}">{{ $item->title }}</a>
+                            <a href="{{ route('prestation.show', ['slug' => $item->slug]) }}">{{ $item->title }}</a>
                         </h4>
-                        <a href="{{Route('ekstrakurikuler')}}"
-                            class="post-tag">Ekstrakurikuler</a>
+                        <a href="{{ Route('prestation') }}" class="post-tag">Prestasi</a>
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
                                 <li><i
@@ -32,12 +32,15 @@
                 </div>
             @elseif ($key == 1)
                 <div class="hot-post-item">
+                    <div class="hot-post-thumb">
+                        <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}"><img
+                                src="{{ asset('storage/ekstra/' . $item->photo) }}" alt=""></a>
+                    </div>
                     <div class="hot-post-content">
                         <h4 class="">
-                            <a href="">{{ $item->title }}</a>
+                            <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}">{{ $item->title }}</a>
                         </h4>
-                        <a href="{{Route('prestation')}}"
-                            class="post-tag">Prestasi</a>
+                        <a href="{{ Route('ekstrakurikuler') }}" class="post-tag">Ekstrakurikuler</a>
 
                         <div class="blog-post-meta">
                             <ul class="list-wrap">
@@ -53,12 +56,16 @@
                 </div>
             @elseif ($key == 2)
                 <div class="hot-post-item">
+                    <div class="hot-post-thumb">
+                        <a href="{{ route('announcement.show', ['slug' => $item->slug]) }}"><img
+                                src="{{ asset('storage/announcement/' . $item->photo) }}" alt=""></a>
+                    </div>
                     <div class="hot-post-content">
                         <h4 class="">
-                            <a href="">{{ $item->title }}</a>
+                            <a
+                                href="{{ route('announcement.show', ['slug' => $item->slug]) }}">{{ $item->title }}</a>
                         </h4>
-                        <a href="{{Route('announcement')}}"
-                            class="post-tag">Pengumuman</a>
+                        <a href="{{ Route('announcement') }}" class="post-tag">Pengumuman</a>
 
                         <div class="blog-post-meta">
                             <ul class="list-wrap">

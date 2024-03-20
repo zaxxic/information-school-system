@@ -62,8 +62,8 @@ class AnnouncementController extends Controller
         $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
         $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
 
-        $recents = $data_from_table2
-            ->concat($prestation)
+        $recents = $prestation
+            ->concat($data_from_table2)
             ->concat($announcement);
         $announcement = Announcement::where('jenis', 'pengumuman')
             ->where('status', 1)
@@ -204,17 +204,13 @@ class AnnouncementController extends Controller
     {
         $item = Announcement::where('slug', $slug)->firstOrFail();
         $moreParagraf = $item->more;
-        $data_from_table1 = ClassArticle::where('status', '1')->take(2)->get();
-        $data_from_table2 = EkstraArticle::where('status', '1')->take(2)->get();
-        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->take(2)->get();
-        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->take(2)->get();
+        $data_from_table2 = EkstraArticle::where('status', '1')->orderBy('created_at', 'desc')->take(1)->get();
+        $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
+        $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
 
-        $all_data = $data_from_table1
+        $recents = $prestation
             ->concat($data_from_table2)
-            ->concat($prestation)
             ->concat($announcement);
-
-        $recents = collect([$data_from_table1])->flatten()->concat($all_data->except($data_from_table1->keys()->all())->take(3));
 
         return   view('user.announcement.show', compact('item', 'moreParagraf', 'recents'));
     }

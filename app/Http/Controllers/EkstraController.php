@@ -26,8 +26,8 @@ class EkstraController extends Controller
         $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
         $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
 
-        $recents = $data_from_table2
-            ->concat($prestation)
+        $recents = $prestation
+            ->concat($data_from_table2)
             ->concat($announcement);
         $ekstra = Ekstra::get();
 
@@ -42,8 +42,8 @@ class EkstraController extends Controller
         $prestation = Announcement::where('status', '1')->where('jenis', 'prestasi')->orderBy('created_at', 'desc')->take(1)->get();
         $announcement = Announcement::where('status', '1')->where('jenis', 'pengumuman')->orderBy('created_at', 'desc')->take(1)->get();
 
-        $recents = $data_from_table2
-            ->concat($prestation)
+        $recents = $prestation
+            ->concat($data_from_table2)
             ->concat($announcement);
         $ekstra = Ekstra::get();
         $ekstras = EkstraArticle::where('status', '1')
