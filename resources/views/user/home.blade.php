@@ -44,21 +44,7 @@
                 </div>
             </div>
         </section>
-        <!-- banner-post-area-end -->
 
-        <!-- ad-banner-area -->
-        {{-- <div class="ad-banner-area">
-            <div class="container">
-                <div class="ad-banner-img ad-banner-img-two text-center">
-                    <a href="#">
-                        <img src="assets/img/images/advertisement10.jpg" alt="">
-                    </a>
-                </div>
-            </div>
-        </div> --}}
-        <!-- ad-banner-area-end -->
-
-        <!-- recent-post-area -->
         <section class="recent-post-area-two pt-60 pb-60">
             <div class="container">
                 <div class="recent-post-inner-wrap">
@@ -91,12 +77,13 @@
                                             <div class="col-lg-6">
                                                 <div class="ta-overlay-post-two">
                                                     <div class="overlay-post-thumb-two">
-                                                        <a href="blog-details.html"><img
+                                                        <a href="{{ route('prestation.show', ['slug' => $item->slug]) }}"><img
                                                                 src="{{ asset('storage/announcement/' . $item->photo) }}"
                                                                 alt=""></a>
                                                     </div>
                                                     <div class="overlay-post-content-two">
-                                                        <h2 class="post-title"><a href="blog-details.html">
+                                                        <h2 class="post-title"><a
+                                                                href="{{ route('prestation.show', ['slug' => $item->slug]) }}">
                                                                 {{ $item->title }}</a></h2>
                                                         <div class="blog-post-meta white-blog-meta">
                                                             <ul class="list-wrap">
@@ -115,13 +102,15 @@
                                             <div class="col-lg-4">
                                                 <div class="ta-overlay-post-two">
                                                     <div class="overlay-post-thumb-two">
-                                                        <a href="blog-details.html"><img
+
+                                                        <a href="{{ route('prestation.show', ['slug' => $item->slug]) }}"><img
                                                                 src="{{ asset('storage/announcement/' . $item->photo) }}"
                                                                 alt=""></a>
                                                     </div>
                                                     <div class="overlay-post-content-two">
                                                         <h2 class="post-title"><a
-                                                                href="blog-details.html">{{ $item->title }}</a></h2>
+                                                                href="{{ route('prestation.show', ['slug' => $item->slug]) }}">{{ $item->title }}</a>
+                                                        </h2>
                                                         <div class="blog-post-meta white-blog-meta">
                                                             <ul class="list-wrap">
                                                                 <li><i
@@ -137,8 +126,6 @@
                                             </div>
                                         @endif
                                     @endforeach
-
-
                                 </div>
                             </div>
                         </div>
@@ -174,7 +161,7 @@
                             <div class="mining-post-wrap mb-40">
                                 <div class="section-title-wrap mb-30">
                                     <div class="section-title">
-                                        <h2 class="title">Kelas abangkuh
+                                        <h2 class="title">Kelas
 
                                         </h2>
                                     </div>
@@ -360,7 +347,8 @@
                                     <h2 class="title">Ekstra</h2>
                                 </div>
                                 <div class="view-all-btn">
-                                    <a href="x" class="link-btn">Lihat semua saja
+
+                                    <a href="x" class="link-btn">Lihat semua
                                         <span class="svg-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                                                 <path
@@ -381,13 +369,12 @@
                                         <div class="col-md-6">
                                             <div class="weekly-post-three">
                                                 <div class="weekly-post-thumb">
-                                                    <a href="blog-details.html"><img
+                                                    <a href="{{ route('ekstra.shows', ['slug' => $item->slug]) }}"><img
                                                             src="{{ asset('storage/ekstra/' . $item->photo) }}"
                                                             alt=""></a>
                                                 </div>
                                                 <div class="weekly-post-content">
-                                                    <h2 class="post-title"><a
-                                                            href="blog-details.html">{{ $item->title }}</a></h2>
+                                                    <h2 class="post-title"><a href="">{{ $item->title }}</a></h2>
                                                     <div class="blog-post-meta">
                                                         <ul class="list-wrap">
                                                             <li><i
